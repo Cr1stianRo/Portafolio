@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos — Cristian Romero</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar fija -->
+    <header class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">CR</a>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <a href="../index.html#hero" class="nav-link" data-es="Inicio" data-en="Home">Inicio</a>
+                <a href="../index.html#about" class="nav-link" data-es="Sobre mí" data-en="About">Sobre mí</a>
+                <a href="../index.html#skills" class="nav-link" data-es="Habilidades" data-en="Skills">Habilidades</a>
+                <a href="../index.html#projects" class="nav-link active" data-es="Proyectos" data-en="Projects">Proyectos</a>
+                <a href="../index.html#experience" class="nav-link" data-es="Experiencia" data-en="Experience">Experiencia</a>
+                <a href="../index.html#education" class="nav-link" data-es="Educación" data-en="Education">Educación</a>
+                <a href="../index.html#contact" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a>
+
+                <button class="lang-toggle">
+                    <span class="lang-option active" data-lang="es">ES</span>
+                    <span class="lang-divider">|</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Projects Page -->
+    <main class="project-detail">
+        <div class="container">
+            <a href="javascript:history.back()" class="back-button">
+                <span>←</span>
+                <span data-es="Volver" data-en="Back">Volver</span>
+            </a>
+
+            <div class="project-detail-header">
+                <h1 class="section-title" data-es="Todos los Proyectos" data-en="All Projects">Todos los Proyectos</h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem;"
+                   data-es="Una colección de proyectos que he desarrollado"
+                   data-en="A collection of projects I've developed">
+                    Una colección de proyectos que he desarrollado
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Comfi Bot -->
+                <article class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Comfi Bot</h3>
+                        <span class="badge badge-status" data-es="En desarrollo" data-en="In progress">En desarrollo</span>
+                    </div>
+                    <p class="project-description"
+                       data-es="Chatbot con IA para el departamento de IT de Comfamiliar Risaralda, integrado en Google Chat. Utiliza OpenAI API para responder preguntas técnicas y automatizar tareas del equipo de soporte."
+                       data-en="AI-powered chatbot for Comfamiliar Risaralda's IT department, integrated with Google Chat. Uses OpenAI API to answer technical questions and automate support team tasks.">
+                        Chatbot con IA para el departamento de IT de Comfamiliar Risaralda, integrado en Google Chat. Utiliza OpenAI API para responder preguntas técnicas y automatizar tareas del equipo de soporte.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag tag-sm">Google Apps Script</span>
+                        <span class="tag tag-sm">OpenAI API</span>
+                        <span class="tag tag-sm">Firebase Firestore</span>
+                        <span class="tag tag-sm">Google Sheets</span>
+                    </div>
+                    <a href="comfi-bot.html" class="btn btn-text" data-es="Ver detalles →" data-en="View details →">Ver detalles →</a>
+                </article>
+
+                <!-- WebAR -->
+                <article class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>WebAR Merge Cube</h3>
+                        <span class="badge badge-status" data-es="En desarrollo" data-en="In progress">En desarrollo</span>
+                    </div>
+                    <p class="project-description"
+                       data-es="Experiencia de realidad aumentada educativa basada en el Merge Cube, con modelos 3D interactivos. Los estudiantes pueden explorar anatomía, geografía y otros temas usando solo su smartphone."
+                       data-en="Educational augmented reality experience based on the Merge Cube, with interactive 3D models. Students can explore anatomy, geography and other topics using just their smartphone.">
+                        Experiencia de realidad aumentada educativa basada en el Merge Cube, con modelos 3D interactivos. Los estudiantes pueden explorar anatomía, geografía y otros temas usando solo su smartphone.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag tag-sm">Mind.AR</span>
+                        <span class="tag tag-sm">A-Frame</span>
+                        <span class="tag tag-sm">JavaScript</span>
+                        <span class="tag tag-sm">GitHub Pages</span>
+                    </div>
+                    <a href="webar.html" class="btn btn-text" data-es="Ver detalles →" data-en="View details →">Ver detalles →</a>
+                </article>
+
+                <!-- ProyectoU -->
+                <article class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>ProyectoU — CMS</h3>
+                        <span class="badge badge-status" data-es="En desarrollo" data-en="In progress">En desarrollo</span>
+                    </div>
+                    <p class="project-description"
+                       data-es="Sistema de gestión de contenido para hogares geriátricos, desarrollado como proyecto universitario. Permite gestionar residentes, personal, actividades y reportes de manera centralizada."
+                       data-en="Content management system for nursing homes, developed as a university project. Allows centralized management of residents, staff, activities and reports.">
+                        Sistema de gestión de contenido para hogares geriátricos, desarrollado como proyecto universitario. Permite gestionar residentes, personal, actividades y reportes de manera centralizada.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag tag-sm">React 19</span>
+                        <span class="tag tag-sm">Node.js</span>
+                        <span class="tag tag-sm">Express</span>
+                        <span class="tag tag-sm">MongoDB</span>
+                    </div>
+                    <a href="proyectou.html" class="btn btn-text" data-es="Ver detalles →" data-en="View details →">Ver detalles →</a>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-es="© 2024 Cristian Mateo Romero Ortiz. Todos los derechos reservados."
+               data-en="© 2024 Cristian Mateo Romero Ortiz. All rights reserved.">
+                © 2024 Cristian Mateo Romero Ortiz. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

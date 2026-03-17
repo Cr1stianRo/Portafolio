@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mí — Cristian Romero</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar fija -->
+    <header class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">CR</a>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <a href="../index.html#hero" class="nav-link" data-es="Inicio" data-en="Home">Inicio</a>
+                <a href="../index.html#about" class="nav-link active" data-es="Sobre mí" data-en="About">Sobre mí</a>
+                <a href="../index.html#skills" class="nav-link" data-es="Habilidades" data-en="Skills">Habilidades</a>
+                <a href="../index.html#projects" class="nav-link" data-es="Proyectos" data-en="Projects">Proyectos</a>
+                <a href="../index.html#experience" class="nav-link" data-es="Experiencia" data-en="Experience">Experiencia</a>
+                <a href="../index.html#education" class="nav-link" data-es="Educación" data-en="Education">Educación</a>
+                <a href="../index.html#contact" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a>
+
+                <button class="lang-toggle">
+                    <span class="lang-option active" data-lang="es">ES</span>
+                    <span class="lang-divider">|</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Page -->
+    <main class="project-detail">
+        <div class="container">
+            <a href="javascript:history.back()" class="back-button">
+                <span>←</span>
+                <span data-es="Volver" data-en="Back">Volver</span>
+            </a>
+
+            <section class="project-section">
+                <h1 class="section-title" data-es="Sobre mí" data-en="About me">Sobre mí</h1>
+                <div class="about-content fade-in">
+                    <p data-es="Estudiante de Ingeniería de Sistemas en la Universidad Libre de Pereira, apasionado por el desarrollo de software y las nuevas tecnologías. Actualmente trabajo como pasante IT en Comfamiliar Risaralda, donde desarrollo herramientas internas y soluciones de automatización."
+                       data-en="Systems Engineering student at Universidad Libre de Pereira, passionate about software development and new technologies. Currently working as an IT intern at Comfamiliar Risaralda, where I develop internal tools and automation solutions.">
+                        Estudiante de Ingeniería de Sistemas en la Universidad Libre de Pereira, apasionado por el desarrollo de software y las nuevas tecnologías. Actualmente trabajo como pasante IT en Comfamiliar Risaralda, donde desarrollo herramientas internas y soluciones de automatización.
+                    </p>
+                    <p data-es="Me especializo en desarrollo web full-stack, automatización con Google Workspace, y tecnologías emergentes como realidad aumentada (WebAR). Busco constantemente aprender nuevas habilidades y aplicarlas en proyectos innovadores que generen impacto real."
+                       data-en="I specialize in full-stack web development, automation with Google Workspace, and emerging technologies like augmented reality (WebAR). I'm constantly seeking to learn new skills and apply them in innovative projects that generate real impact.">
+                        Me especializo en desarrollo web full-stack, automatización con Google Workspace, y tecnologías emergentes como realidad aumentada (WebAR). Busco constantemente aprender nuevas habilidades y aplicarlas en proyectos innovadores que generen impacto real.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-es="© 2024 Cristian Mateo Romero Ortiz. Todos los derechos reservados."
+               data-en="© 2024 Cristian Mateo Romero Ortiz. All rights reserved.">
+                © 2024 Cristian Mateo Romero Ortiz. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristian Romero — Desarrollador de Software</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar fija -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="logo" data-es="CR" data-en="CR">CR</a>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link active" data-es="Inicio" data-en="Home">Inicio</a>
+                <a href="#about" class="nav-link" data-es="Sobre mí" data-en="About">Sobre mí</a>
+                <a href="#skills" class="nav-link" data-es="Habilidades" data-en="Skills">Habilidades</a>
+                <a href="#projects" class="nav-link" data-es="Proyectos" data-en="Projects">Proyectos</a>
+                <a href="#experience" class="nav-link" data-es="Experiencia" data-en="Experience">Experiencia</a>
+                <a href="#education" class="nav-link" data-es="Educación" data-en="Education">Educación</a>
+                <a href="#contact" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a>
+
+                <button class="lang-toggle">
+                    <span class="lang-option active" data-lang="es">ES</span>
+                    <span class="lang-divider">|</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">
+                    <span data-es="Hola, soy" data-en="Hi, I'm">Hola, soy</span>
+                    <span class="accent">Cristian Romero</span>
+                </h1>
+                <p class="hero-subtitle" data-es="Desarrollador de Software | Universidad Libre Pereira" data-en="Software Developer | Universidad Libre Pereira">
+                    Desarrollador de Software | Universidad Libre Pereira
+                </p>
+                <p class="hero-location" data-es="📍 Pereira, Colombia" data-en="📍 Pereira, Colombia">
+                    📍 Pereira, Colombia
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary" data-es="Ver proyectos" data-en="View projects">Ver proyectos</a>
+                    <a href="#contact" class="btn btn-secondary" data-es="Contacto" data-en="Contact">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title" data-es="Sobre mí" data-en="About me">Sobre mí</h2>
+            <div class="about-content fade-in">
+                <p data-es="Estudiante de Ingeniería de Sistemas en la Universidad Libre de Pereira, apasionado por el desarrollo de software y las nuevas tecnologías. Actualmente trabajo como pasante IT en Comfamiliar Risaralda, donde desarrollo herramientas internas y soluciones de automatización."
+                   data-en="Systems Engineering student at Universidad Libre de Pereira, passionate about software development and new technologies. Currently working as an IT intern at Comfamiliar Risaralda, where I develop internal tools and automation solutions.">
+                    Estudiante de Ingeniería de Sistemas en la Universidad Libre de Pereira, apasionado por el desarrollo de software y las nuevas tecnologías. Actualmente trabajo como pasante IT en Comfamiliar Risaralda, donde desarrollo herramientas internas y soluciones de automatización.
+                </p>
+                <p data-es="Me especializo en desarrollo web full-stack, automatización con Google Workspace, y tecnologías emergentes como realidad aumentada (WebAR). Busco constantemente aprender nuevas habilidades y aplicarlas en proyectos innovadores que generen impacto real."
+                   data-en="I specialize in full-stack web development, automation with Google Workspace, and emerging technologies like augmented reality (WebAR). I'm constantly seeking to learn new skills and apply them in innovative projects that generate real impact.">
+                    Me especializo en desarrollo web full-stack, automatización con Google Workspace, y tecnologías emergentes como realidad aumentada (WebAR). Busco constantemente aprender nuevas habilidades y aplicarlas en proyectos innovadores que generen impacto real.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-es="Habilidades Técnicas" data-en="Technical Skills">Habilidades Técnicas</h2>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <h3 data-es="Lenguajes" data-en="Languages">Lenguajes</h3>
+                    <div class="skill-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">Python</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">A-Frame</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 data-es="Bases de datos" data-en="Databases">Bases de datos</h3>
+                    <div class="skill-tags">
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Firebase Firestore</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 data-es="Herramientas" data-en="Tools">Herramientas</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Google Apps Script</span>
+                        <span class="tag">AppSheet</span>
+                        <span class="tag">GCP</span>
+                        <span class="tag">Mind.AR</span>
+                        <span class="tag">GitHub</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 data-es="Idiomas" data-en="Languages">Idiomas</h3>
+                    <div class="skill-tags">
+                        <span class="tag" data-es="Español (nativo)" data-en="Spanish (native)">Español (nativo)</span>
+                        <span class="tag" data-es="Inglés (B1-B2)" data-en="English (B1-B2)">Inglés (B1-B2)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title" data-es="Proyectos Destacados" data-en="Featured Projects">Proyectos Destacados</h2>
+            <div class="projects-grid fade-in">
+                <!-- Comfi Bot -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3>Comfi Bot</h3>
+                        <span class="badge badge-status" data-es="En desarrollo" data-en="In progress">En desarrollo</span>
+                    </div>
+                    <p class="project-description" data-es="Chatbot con IA para el departamento de IT de Comfamiliar Risaralda, integrado en Google Chat"
+                       data-en="AI-powered chatbot for Comfamiliar Risaralda's IT department, integrated with Google Chat">
+                        Chatbot con IA para el departamento de IT de Comfamiliar Risaralda, integrado en Google Chat
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag tag-sm">Google Apps Script</span>
+                        <span class="tag tag-sm">OpenAI API</span>
+                        <span class="tag tag-sm">Firebase</span>
+                    </div>
+                    <a href="projects/comfi-bot.html" target="_blank" class="btn btn-text" data-es="Ver más →" data-en="Learn more →">Ver más →</a>
+                </article>
+
+                <!-- WebAR -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3>WebAR Merge Cube</h3>
+                        <span class="badge badge-status" data-es="En desarrollo" data-en="In progress">En desarrollo</span>
+                    </div>
+                    <p class="project-description" data-es="Experiencia de realidad aumentada educativa basada en el Merge Cube, con modelos 3D interactivos"
+                       data-en="Educational augmented reality experience based on the Merge Cube, with interactive 3D models">
+                        Experiencia de realidad aumentada educativa basada en el Merge Cube, con modelos 3D interactivos
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag tag-sm">Mind.AR</span>
+                        <span class="tag tag-sm">A-Frame</span>
+                        <span class="tag tag-sm">JavaScript</span>
+                    </div>
+                    <a href="projects/webar.html" target="_blank" class="btn btn-text" data-es="Ver más →" data-en="Learn more →">Ver más →</a>
+                </article>
+
+                <!-- ProyectoU -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <h3>ProyectoU — CMS</h3>
+                        <span class="badge badge-status" data-es="En desarrollo" data-en="In progress">En desarrollo</span>
+                    </div>
+                    <p class="project-description" data-es="Sistema de gestión de contenido para hogares geriátricos, desarrollado como proyecto universitario"
+                       data-en="Content management system for nursing homes, developed as a university project">
+                        Sistema de gestión de contenido para hogares geriátricos, desarrollado como proyecto universitario
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag tag-sm">React 19</span>
+                        <span class="tag tag-sm">Node.js</span>
+                        <span class="tag tag-sm">MongoDB</span>
+                    </div>
+                    <a href="projects/proyectou.html" target="_blank" class="btn btn-text" data-es="Ver más →" data-en="Learn more →">Ver más →</a>
+                </article>
+            </div>
+            <div class="section-cta">
+                <a href="projects/index.html" target="_blank" class="btn btn-primary" data-es="Ver todos los proyectos" data-en="View all projects">Ver todos los proyectos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-es="Experiencia Laboral" data-en="Work Experience">Experiencia Laboral</h2>
+            <div class="timeline fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Comfamiliar Risaralda</h3>
+                            <span class="timeline-date">2024 — <span data-es="Presente" data-en="Present">Presente</span></span>
+                        </div>
+                        <h4 data-es="Pasante IT / Sistemas" data-en="IT / Systems Intern">Pasante IT / Sistemas</h4>
+                        <p data-es="Desarrollo de herramientas internas, automatización con Google Workspace, soporte IT"
+                           data-en="Internal tools development, automation with Google Workspace, IT support">
+                            Desarrollo de herramientas internas, automatización con Google Workspace, soporte IT
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Veritran</h3>
+                            <span class="timeline-date">2020</span>
+                        </div>
+                        <h4 data-es="QA / Pruebas de aplicaciones" data-en="QA / Application Testing">QA / Pruebas de aplicaciones</h4>
+                        <p data-es="Testing de aplicaciones móviles y web (remoto)"
+                           data-en="Mobile and web application testing (remote)">
+                            Testing de aplicaciones móviles y web (remoto)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title" data-es="Educación" data-en="Education">Educación</h2>
+            <div class="timeline fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Universidad Libre — Sede Pereira</h3>
+                            <span class="timeline-date" data-es="En curso" data-en="In progress">En curso</span>
+                        </div>
+                        <h4 data-es="Ingeniería de Sistemas" data-en="Systems Engineering">Ingeniería de Sistemas</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>SENA</h3>
+                            <span class="timeline-date" data-es="En curso" data-en="In progress">En curso</span>
+                        </div>
+                        <h4>English Does Work <span data-es="(Niveles 7–10)" data-en="(Levels 7–10)">(Niveles 7–10)</span></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-es="Contacto" data-en="Contact">Contacto</h2>
+            <div class="contact-content fade-in">
+                <p class="contact-intro" data-es="¿Interesado en trabajar juntos? ¡Hablemos!"
+                   data-en="Interested in working together? Let's talk!">
+                    ¿Interesado en trabajar juntos? ¡Hablemos!
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:cromeroo@comfamiliar.com" class="contact-link">
+                        <span class="contact-icon">✉️</span>
+                        cromeroo@comfamiliar.com
+                    </a>
+                    <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <span class="contact-icon">💼</span>
+                        LinkedIn
+                    </a>
+                    <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <span class="contact-icon">🔗</span>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-es="© 2024 Cristian Mateo Romero Ortiz. Todos los derechos reservados."
+               data-en="© 2024 Cristian Mateo Romero Ortiz. All rights reserved.">
+                © 2024 Cristian Mateo Romero Ortiz. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

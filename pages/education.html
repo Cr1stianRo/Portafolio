@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educación — Cristian Romero</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar fija -->
+    <header class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">CR</a>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <a href="../index.html#hero" class="nav-link" data-es="Inicio" data-en="Home">Inicio</a>
+                <a href="../index.html#about" class="nav-link" data-es="Sobre mí" data-en="About">Sobre mí</a>
+                <a href="../index.html#skills" class="nav-link" data-es="Habilidades" data-en="Skills">Habilidades</a>
+                <a href="../index.html#projects" class="nav-link" data-es="Proyectos" data-en="Projects">Proyectos</a>
+                <a href="../index.html#experience" class="nav-link" data-es="Experiencia" data-en="Experience">Experiencia</a>
+                <a href="../index.html#education" class="nav-link active" data-es="Educación" data-en="Education">Educación</a>
+                <a href="../index.html#contact" class="nav-link" data-es="Contacto" data-en="Contact">Contacto</a>
+
+                <button class="lang-toggle">
+                    <span class="lang-option active" data-lang="es">ES</span>
+                    <span class="lang-divider">|</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Education Page -->
+    <main class="project-detail">
+        <div class="container">
+            <a href="javascript:history.back()" class="back-button">
+                <span>←</span>
+                <span data-es="Volver" data-en="Back">Volver</span>
+            </a>
+
+            <section class="project-section">
+                <h1 class="section-title" data-es="Educación" data-en="Education">Educación</h1>
+                <div class="timeline fade-in">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>Universidad Libre — Sede Pereira</h3>
+                                <span class="timeline-date" data-es="En curso" data-en="In progress">En curso</span>
+                            </div>
+                            <h4 data-es="Ingeniería de Sistemas" data-en="Systems Engineering">Ingeniería de Sistemas</h4>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>SENA</h3>
+                                <span class="timeline-date" data-es="En curso" data-en="In progress">En curso</span>
+                            </div>
+                            <h4>English Does Work <span data-es="(Niveles 7–10)" data-en="(Levels 7–10)">(Niveles 7–10)</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-es="© 2024 Cristian Mateo Romero Ortiz. Todos los derechos reservados."
+               data-en="© 2024 Cristian Mateo Romero Ortiz. All rights reserved.">
+                © 2024 Cristian Mateo Romero Ortiz. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
