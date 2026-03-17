@@ -50,10 +50,52 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ================================================================================
-// NAVBAR — Fixed navbar & Active section highlighting
+// INTRO HERO & NAVBAR VISIBILITY
 // ================================================================================
 
 const navbar = document.querySelector('.navbar');
+const introHero = document.querySelector('#intro-hero');
+const viewWorkBtn = document.getElementById('view-work-btn');
+
+// Mostrar navbar al hacer scroll o salir del intro-hero
+function handleNavbarVisibility() {
+    if (!introHero) return;
+
+    const introHeight = introHero.offsetHeight;
+    const scrolled = window.scrollY;
+
+    if (scrolled > introHeight * 0.8) {
+        navbar.classList.remove('navbar-hidden');
+    } else {
+        navbar.classList.add('navbar-hidden');
+    }
+}
+
+// Botón "Ver mi trabajo" - scroll a la siguiente sección
+if (viewWorkBtn) {
+    viewWorkBtn.addEventListener('click', () => {
+        const heroSection = document.querySelector('#hero');
+        if (heroSection) {
+            heroSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Mostrar navbar inmediatamente
+        setTimeout(() => {
+            navbar.classList.remove('navbar-hidden');
+        }, 300);
+    });
+}
+
+// Detectar scroll para mostrar/ocultar navbar
+if (introHero) {
+    window.addEventListener('scroll', handleNavbarVisibility);
+    // Verificar estado inicial
+    handleNavbarVisibility();
+}
+
+// ================================================================================
+// NAVBAR — Fixed navbar & Active section highlighting
+// ================================================================================
+
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section[id]');
 
