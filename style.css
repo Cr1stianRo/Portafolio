@@ -31,7 +31,13 @@ html {
 
 body {
     font-family: var(--font-main);
-    background: var(--bg-primary);
+    background: linear-gradient(180deg,
+        #0a0a0a 0%,
+        var(--bg-primary) 30%,
+        var(--bg-primary) 70%,
+        #0a0a0a 100%
+    );
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
     font-size: 16px;
@@ -446,58 +452,15 @@ img {
 }
 
 /* ================================================================================
-   SECTIONS — Smooth Transitions
+   SECTIONS — Single Page Flow
    ================================================================================ */
 
 .section {
     padding: 6rem 0;
-    position: relative;
 }
 
 .section-dark {
-    background: var(--bg-secondary);
-}
-
-/* Difuminado al final de secciones normales (negro → gris) */
-.section:not(.section-dark)::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    background: linear-gradient(to bottom,
-        var(--bg-primary) 0%,
-        rgba(13, 13, 13, 0.8) 30%,
-        rgba(26, 26, 26, 0.6) 70%,
-        var(--bg-secondary) 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Difuminado al inicio de secciones dark (gris → negro anterior) */
-.section-dark::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    background: linear-gradient(to bottom,
-        var(--bg-primary) 0%,
-        rgba(13, 13, 13, 0.8) 30%,
-        rgba(26, 26, 26, 0.6) 70%,
-        var(--bg-secondary) 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Contenido por encima del gradiente */
-.section .container {
-    position: relative;
-    z-index: 2;
+    background: transparent;
 }
 
 .section-title {
@@ -786,34 +749,9 @@ img {
    ================================================================================ */
 
 .contact-section {
-    background: var(--bg-secondary);
+    background: transparent;
     padding: 4rem 0 3rem;
     text-align: center;
-    position: relative;
-}
-
-/* Difuminado al inicio de contacto (desde educación) */
-.contact-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 120px;
-    background: linear-gradient(to bottom,
-        var(--bg-primary) 0%,
-        rgba(13, 13, 13, 0.8) 30%,
-        rgba(26, 26, 26, 0.6) 70%,
-        var(--bg-secondary) 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Contenido por encima del gradiente */
-.contact-section .container {
-    position: relative;
-    z-index: 2;
 }
 
 .contact-row {
@@ -878,7 +816,7 @@ img {
 
 .footer {
     position: relative;
-    background: var(--bg-secondary);
+    background: transparent;
     padding: 3rem 0;
     text-align: center;
     color: var(--text-secondary);
