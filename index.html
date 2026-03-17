@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body>
     <!-- Initial Intro Hero -->
@@ -152,47 +153,80 @@
     <section id="skills" class="section">
         <div class="container">
             <h2 class="section-title" data-es="Habilidades Técnicas" data-en="Technical Skills">Habilidades Técnicas</h2>
-            <div class="skills-grid fade-in">
-                <div class="skill-category">
-                    <h3 data-es="Lenguajes" data-en="Languages">Lenguajes</h3>
-                    <div class="skill-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">Python</span>
+            <div class="skills-carousel-container fade-in">
+                <!-- Lenguajes Card -->
+                <div class="skill-card" data-category="languages">
+                    <h3 class="skill-card-title" data-es="Lenguajes" data-en="Languages">Lenguajes</h3>
+                    <div class="skill-carousel">
+                        <div class="skill-item" data-name="JavaScript">
+                            <i class="devicon-javascript-plain colored"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item" data-name="HTML">
+                            <i class="devicon-html5-plain colored"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item" data-name="CSS">
+                            <i class="devicon-css3-plain colored"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item" data-name="Python">
+                            <i class="devicon-python-plain colored"></i>
+                            <span>Python</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Frameworks</h3>
-                    <div class="skill-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Express</span>
-                        <span class="tag">A-Frame</span>
+
+                <!-- Frameworks Card -->
+                <div class="skill-card" data-category="frameworks">
+                    <h3 class="skill-card-title">Frameworks</h3>
+                    <div class="skill-carousel">
+                        <div class="skill-item" data-name="React">
+                            <i class="devicon-react-original colored"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item" data-name="Node.js">
+                            <i class="devicon-nodejs-plain colored"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item" data-name="Express">
+                            <i class="devicon-express-original"></i>
+                            <span>Express</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3 data-es="Bases de datos" data-en="Databases">Bases de datos</h3>
-                    <div class="skill-tags">
-                        <span class="tag">MongoDB</span>
-                        <span class="tag">Firebase Firestore</span>
+
+                <!-- Bases de Datos Card -->
+                <div class="skill-card" data-category="databases">
+                    <h3 class="skill-card-title" data-es="Bases de datos" data-en="Databases">Bases de datos</h3>
+                    <div class="skill-carousel">
+                        <div class="skill-item" data-name="MongoDB">
+                            <i class="devicon-mongodb-plain colored"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="skill-item" data-name="Firebase">
+                            <i class="devicon-firebase-plain colored"></i>
+                            <span>Firebase</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3 data-es="Herramientas" data-en="Tools">Herramientas</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Google Apps Script</span>
-                        <span class="tag">AppSheet</span>
-                        <span class="tag">GCP</span>
-                        <span class="tag">Mind.AR</span>
-                        <span class="tag">GitHub</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3 data-es="Idiomas" data-en="Languages">Idiomas</h3>
-                    <div class="skill-tags">
-                        <span class="tag" data-es="Español (nativo)" data-en="Spanish (native)">Español (nativo)</span>
-                        <span class="tag" data-es="Inglés (B1-B2)" data-en="English (B1-B2)">Inglés (B1-B2)</span>
+
+                <!-- Herramientas Card -->
+                <div class="skill-card" data-category="tools">
+                    <h3 class="skill-card-title" data-es="Herramientas" data-en="Tools">Herramientas</h3>
+                    <div class="skill-carousel">
+                        <div class="skill-item" data-name="Google Cloud">
+                            <i class="devicon-googlecloud-plain colored"></i>
+                            <span>Google Cloud</span>
+                        </div>
+                        <div class="skill-item" data-name="GitHub">
+                            <i class="devicon-github-original"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="skill-item" data-name="Git">
+                            <i class="devicon-git-plain colored"></i>
+                            <span>Git</span>
+                        </div>
                     </div>
                 </div>
             </div>

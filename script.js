@@ -71,12 +71,18 @@ function handleNavbarVisibility() {
     }
 }
 
-// Botón "Ver mi trabajo" - scroll a la siguiente sección
+// Botón "Ver mi trabajo" - scroll a la sección de proyectos
 if (viewWorkBtn) {
     viewWorkBtn.addEventListener('click', () => {
-        const aboutSection = document.querySelector('#about');
-        if (aboutSection) {
-            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        const projectsSection = document.querySelector('#projects');
+        if (projectsSection) {
+            // Scroll con offset para centrar mejor
+            const navbarHeight = navbar.offsetHeight;
+            const targetPosition = projectsSection.offsetTop - navbarHeight - 20;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
         // Mostrar navbar inmediatamente
         setTimeout(() => {
@@ -355,3 +361,82 @@ if (canvas) {
         initParticles();
     });
 }
+
+// ================================================================================
+// SKILLS CAROUSEL — Carrusel automático de habilidades
+// ================================================================================
+
+const skillCards = document.querySelectorAll('.skill-card');
+
+skillCards.forEach(card => {
+    const carousel = card.querySelector('.skill-carousel');
+    const items = carousel.querySelectorAll('.skill-item');
+    let currentIndex = 0;
+    let intervalId = null;
+    let isPaused = false;
+
+    // Mostrar el primer item inicialmente
+    if (items.length > 0) {
+        items[0].classList.add('active');
+    }
+
+    // Función para cambiar al siguiente item
+    function nextItem() {
+        if (isPaused || items.length <= 1) return;
+
+        items[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % items.length;
+        items[currentIndex].classList.add('active');
+    }
+
+    // Iniciar carrusel automático
+    function startCarousel() {
+        if (items.length <= 1) return;
+        intervalId = setInterval(nextItem, 2000); // Cambia cada 2 segundos
+    }
+
+    // Detener carrusel
+    function stopCarousel() {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    }
+
+    // Pausar y mostrar todos los items
+    function pauseAndShowAll() {
+        isPaused = true;
+        stopCarousel();
+        card.classList.add('paused');
+        items.forEach(item => item.classList.add('active'));
+    }
+
+    // Reanudar carrusel
+    function resumeCarousel() {
+        isPaused = false;
+        card.classList.remove('paused');
+
+        // Resetear: solo mostrar el item actual
+        items.forEach((item, index) => {
+            if (index !== currentIndex) {
+                item.classList.remove('active');
+            }
+        });
+
+        startCarousel();
+    }
+
+    // Event listeners
+    card.addEventListener('mouseenter', pauseAndShowAll);
+    card.addEventListener('mouseleave', resumeCarousel);
+    card.addEventListener('click', () => {
+        if (isPaused) {
+            resumeCarousel();
+        } else {
+            pauseAndShowAll();
+        }
+    });
+
+    // Iniciar el carrusel
+    startCarousel();
+});
