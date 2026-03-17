@@ -735,9 +735,9 @@ img {
 }
 
 .footer-content p {
-    color: var(--bg-primary);
+    color: #ffffff;
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Animated Waves */
