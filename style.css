@@ -744,7 +744,7 @@ img {
 
 .contact-section {
     background: var(--bg-secondary);
-    padding: 4rem 0 5rem;
+    padding: 4rem 0 3rem;
     text-align: center;
 }
 
@@ -752,7 +752,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 4rem;
     max-width: 800px;
     margin: 0 auto;
     flex-wrap: wrap;
@@ -763,20 +763,15 @@ img {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
-    padding: 1.5rem;
+    padding: 0.5rem;
     background: transparent;
-    border: 2px solid var(--border);
-    border-radius: 16px;
-    min-width: 140px;
+    border: none;
     transition: var(--transition);
     cursor: pointer;
 }
 
 .contact-item:hover {
-    border-color: var(--accent);
     transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
-    background: rgba(0, 217, 255, 0.05);
 }
 
 .contact-icon {
@@ -800,12 +795,7 @@ img {
 /* Responsive */
 @media (max-width: 768px) {
     .contact-row {
-        gap: 1.5rem;
-    }
-
-    .contact-item {
-        min-width: 120px;
-        padding: 1.25rem;
+        gap: 2.5rem;
     }
 
     .contact-icon {
@@ -821,7 +811,6 @@ img {
 .footer {
     position: relative;
     background: var(--bg-secondary);
-    border-top: 1px solid var(--border);
     padding: 3rem 0;
     text-align: center;
     color: var(--text-secondary);
