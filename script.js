@@ -155,8 +155,15 @@ const navMenu = document.querySelector('.nav-menu');
 
 if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+        const isActive = navMenu.classList.toggle('active');
         menuToggle.classList.toggle('active');
+
+        // Bloquear scroll del body cuando el menú está abierto
+        if (isActive) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
 
     // Cerrar menú al hacer click en un link
@@ -164,6 +171,7 @@ if (menuToggle && navMenu) {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             menuToggle.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 
@@ -172,6 +180,7 @@ if (menuToggle && navMenu) {
         if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
             navMenu.classList.remove('active');
             menuToggle.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 }

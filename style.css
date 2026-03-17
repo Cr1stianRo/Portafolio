@@ -1032,16 +1032,21 @@ img {
         top: 73px;
         left: 0;
         right: 0;
+        bottom: 0;
+        height: calc(100vh - 73px);
+        height: calc(100dvh - 73px);
         flex-direction: column;
         background: rgba(13, 13, 13, 0.98);
         backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
+        border-bottom: none;
         padding: 2rem;
         gap: 1.5rem;
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
         transition: var(--transition);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-menu.active {
