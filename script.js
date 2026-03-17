@@ -363,7 +363,7 @@ if (canvas) {
 }
 
 // ================================================================================
-// SKILLS CAROUSEL — Carrusel horizontal automático
+// SKILLS CAROUSEL — Carrusel automático de habilidades
 // ================================================================================
 
 const skillCards = document.querySelectorAll('.skill-card');
@@ -373,78 +373,86 @@ const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 skillCards.forEach(card => {
     const carousel = card.querySelector('.skill-carousel');
-    const items = Array.from(carousel.querySelectorAll('.skill-item'));
+    const items = carousel.querySelectorAll('.skill-item');
+    let currentIndex = 0;
+    let intervalId = null;
     let isPaused = false;
-    let animationId = null;
-    let scrollPosition = 0;
-    const scrollSpeed = 0.5; // Velocidad del desplazamiento
 
-    if (items.length === 0) return;
-
-    // Duplicar items para efecto infinito
-    const originalItemsHTML = carousel.innerHTML;
-    carousel.innerHTML = originalItemsHTML + originalItemsHTML + originalItemsHTML;
-
-    const allItems = Array.from(carousel.querySelectorAll('.skill-item'));
-
-    // Calcular ancho total
-    function updateCarousel() {
-        if (isPaused) return;
-
-        scrollPosition += scrollSpeed;
-
-        // Resetear cuando llega al final del primer set
-        const itemWidth = allItems[0].offsetWidth + 32; // 32px = gap entre items
-        const totalWidth = itemWidth * items.length;
-
-        if (scrollPosition >= totalWidth) {
-            scrollPosition = 0;
-        }
-
-        carousel.style.transform = `translateX(-${scrollPosition}px)`;
-        animationId = requestAnimationFrame(updateCarousel);
+    // Mostrar el primer item inicialmente
+    if (items.length > 0) {
+        items[0].classList.add('active');
     }
 
-    // Pausar y mostrar todos
-    function pauseCarousel() {
-        isPaused = true;
-        card.classList.add('paused');
-        if (animationId) {
-            cancelAnimationFrame(animationId);
+    // Función para cambiar al siguiente item
+    function nextItem() {
+        if (isPaused || items.length <= 1) return;
+
+        items[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % items.length;
+        items[currentIndex].classList.add('active');
+    }
+
+    // Iniciar carrusel automático
+    function startCarousel() {
+        if (items.length <= 1) return;
+        intervalId = setInterval(nextItem, 2000); // Cambia cada 2 segundos
+    }
+
+    // Detener carrusel
+    function stopCarousel() {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
         }
+    }
+
+    // Pausar y mostrar todos los items
+    function pauseAndShowAll() {
+        isPaused = true;
+        stopCarousel();
+        card.classList.add('paused');
+        items.forEach(item => item.classList.add('active'));
     }
 
     // Reanudar carrusel
     function resumeCarousel() {
         isPaused = false;
         card.classList.remove('paused');
-        updateCarousel();
+
+        // Resetear: solo mostrar el item actual
+        items.forEach((item, index) => {
+            if (index !== currentIndex) {
+                item.classList.remove('active');
+            }
+        });
+
+        startCarousel();
     }
 
     // Event listeners
     if (isTouchDevice) {
-        // En móvil: solo click/tap para toggle
+        // En móvil: solo tap para toggle
         card.addEventListener('click', (e) => {
             e.preventDefault();
             if (isPaused) {
                 resumeCarousel();
             } else {
-                pauseCarousel();
+                pauseAndShowAll();
             }
         });
     } else {
         // En desktop: hover + click
-        card.addEventListener('mouseenter', pauseCarousel);
+        card.addEventListener('mouseenter', pauseAndShowAll);
         card.addEventListener('mouseleave', resumeCarousel);
         card.addEventListener('click', () => {
             if (isPaused) {
                 resumeCarousel();
             } else {
-                pauseCarousel();
+                pauseAndShowAll();
             }
         });
     }
 
-    // Iniciar animación
-    updateCarousel();
+    // Iniciar el carrusel
+    startCarousel();
 });
