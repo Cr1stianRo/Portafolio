@@ -1006,28 +1006,27 @@ img {
     padding-left: 4rem;
 }
 
+/* Main vertical line (full height) */
+.career-timeline-mainline {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent);
+    z-index: 0;
+}
+
 /* Arrow indicator at the top */
 .career-timeline-arrow {
     position: absolute;
-    left: -3.5rem;
-    top: -2.5rem;
+    left: -0.75rem;
+    top: -1.5rem;
     font-size: 1.5rem;
     color: var(--accent);
     transform: rotate(-90deg);
     animation: pulse-arrow 2s ease-in-out infinite;
-    z-index: 3;
-}
-
-.career-timeline-arrow::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 1.5rem;
-    background: var(--accent);
-    animation: none;
+    z-index: 1;
 }
 
 @keyframes pulse-arrow {
@@ -1041,43 +1040,46 @@ img {
     }
 }
 
+/* Finish dot at the bottom */
+.career-timeline-finishdot {
+    position: absolute;
+    left: -0.5rem;
+    bottom: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    z-index: 10;
+}
+
 /* Timeline Item */
 .career-timeline-item {
     position: relative;
     margin-bottom: 3rem;
 }
 
-/* Vertical line */
-.career-timeline-line {
-    position: absolute;
-    left: -3.4rem;
-    top: 0;
-    bottom: -3rem;
-    width: 2px;
-    background: var(--accent);
-}
-
-/* First item line starts higher to connect with arrow */
-.career-timeline-item:first-child .career-timeline-line {
-    top: -1rem;
-}
-
-.career-timeline-item:last-child .career-timeline-line {
-    display: none;
-}
-
-/* Timeline dot */
+/* Timeline dot (circle at each item) */
 .career-timeline-dot {
     position: absolute;
-    left: -3.8rem;
+    left: -0.625rem;
     top: 1.5rem;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: var(--bg-primary);
-    border: 3px solid var(--accent);
-    z-index: 2;
-    box-shadow: 0 0 0 4px var(--bg-primary);
+    background: var(--accent);
+    border: 4px solid var(--bg-primary);
+    z-index: 10;
+}
+
+/* Connector line (horizontal from dot to card) */
+.career-timeline-connector {
+    position: absolute;
+    left: 1.25rem;
+    top: 2.4rem;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--accent);
+    z-index: 1;
 }
 
 /* Career Card */
@@ -1550,31 +1552,30 @@ img {
     }
 
     .career-timeline {
-        padding-left: 2.5rem;
+        padding-left: 3rem;
     }
 
     .career-timeline-arrow {
-        left: -2.2rem;
+        left: -0.6rem;
         font-size: 1.2rem;
-        top: -2.2rem;
+        top: -1.2rem;
     }
 
-    .career-timeline-arrow::after {
-        height: 1.2rem;
-    }
-
-    .career-timeline-line {
-        left: -2.1rem;
-    }
-
-    .career-timeline-item:first-child .career-timeline-line {
-        top: -0.8rem;
+    .career-timeline-finishdot {
+        left: -0.4rem;
+        width: 14px;
+        height: 14px;
     }
 
     .career-timeline-dot {
-        left: -2.4rem;
-        width: 14px;
-        height: 14px;
+        left: -0.5rem;
+        width: 18px;
+        height: 18px;
+    }
+
+    .career-timeline-connector {
+        left: 0.9rem;
+        width: 2rem;
     }
 
     .career-card {
