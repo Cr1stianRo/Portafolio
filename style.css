@@ -1058,6 +1058,10 @@ img {
     margin-bottom: 3rem;
 }
 
+.career-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
 /* Timeline dot (circle at each item) */
 .career-timeline-dot {
     position: absolute;
@@ -1079,7 +1083,8 @@ img {
     width: 2.5rem;
     height: 2px;
     background: var(--accent);
-    z-index: 1;
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* Career Card */
@@ -1576,6 +1581,7 @@ img {
     .career-timeline-connector {
         left: 0.9rem;
         width: 2rem;
+        top: 2.2rem;
     }
 
     .career-card {
