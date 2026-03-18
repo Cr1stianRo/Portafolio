@@ -492,7 +492,7 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
     // Variable para el modelo
     let model = null;
 
-    // Luces (más intensas para ver el planeta)
+    // Luces (más intensas para ver el modelo)
     const pointLight1 = new THREE.PointLight(0xffffff, 2);
     pointLight1.position.set(5, 5, 5);
     scene.add(pointLight1);
@@ -504,25 +504,70 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambientLight);
 
-    // Cargar modelo GLB
+    // Función para crear modelo fallback (geometría simple)
+    function createFallbackModel() {
+        console.log('🔄 Creando modelo fallback (cohete simple)');
+
+        // Crear un cohete simple con geometría básica
+        const group = new THREE.Group();
+
+        // Cuerpo del cohete (cilindro)
+        const bodyGeometry = new THREE.CylinderGeometry(0.3, 0.3, 1.5, 32);
+        const bodyMaterial = new THREE.MeshStandardMaterial({
+            color: 0x00d9ff,
+            metalness: 0.7,
+            roughness: 0.2,
+            emissive: 0x00d9ff,
+            emissiveIntensity: 0.2
+        });
+        const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+        group.add(body);
+
+        // Punta del cohete (cono)
+        const coneGeometry = new THREE.ConeGeometry(0.3, 0.6, 32);
+        const cone = new THREE.Mesh(coneGeometry, bodyMaterial);
+        cone.position.y = 1.05;
+        group.add(cone);
+
+        // Aletas (3 aletas)
+        const finGeometry = new THREE.BoxGeometry(0.1, 0.5, 0.3);
+        for (let i = 0; i < 3; i++) {
+            const fin = new THREE.Mesh(finGeometry, bodyMaterial);
+            const angle = (i * 120) * (Math.PI / 180);
+            fin.position.x = Math.cos(angle) * 0.3;
+            fin.position.z = Math.sin(angle) * 0.3;
+            fin.position.y = -0.5;
+            fin.rotation.y = angle;
+            group.add(fin);
+        }
+
+        // Rotar para que apunte hacia arriba
+        group.rotation.x = 0;
+        group.scale.set(0.8, 0.8, 0.8);
+
+        return group;
+    }
+
+    // Cargar modelo GLB con fallback
     console.log('GLTFLoader disponible:', typeof THREE.GLTFLoader !== 'undefined');
 
-    if (typeof THREE.GLTFLoader !== 'undefined') {
+    // Determinar la ruta correcta según el protocolo
+    const isFileProtocol = window.location.protocol === 'file:';
+    const rocketPath = isFileProtocol ? 'assets/models/rocket.glb' : '/assets/models/rocket.glb';
+
+    if (typeof THREE.GLTFLoader !== 'undefined' && !isFileProtocol) {
         const loader = new THREE.GLTFLoader();
 
-        console.log('Intentando cargar cohete desde: /assets/models/rocket.glb');
+        console.log('Intentando cargar cohete desde:', rocketPath);
 
         loader.load(
-            '/assets/models/rocket.glb',
+            rocketPath,
             function (gltf) {
                 model = gltf.scene;
-
-                // Ajustar escala y posición (30% más pequeño: 2 * 0.7 = 1.4)
                 model.scale.set(1.4, 1.4, 1.4);
                 model.position.set(0, 0, 0);
-
                 scene.add(model);
-                console.log('✅ Cohete cargado correctamente', model);
+                console.log('✅ Cohete GLB cargado correctamente');
             },
             function (xhr) {
                 if (xhr.lengthComputable) {
@@ -531,13 +576,16 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
                 }
             },
             function (error) {
-                console.error('❌ Error cargando cohete:', error);
-                console.log('Tipo de error:', error.type);
-                console.log('Target:', error.target);
+                console.error('❌ Error cargando cohete GLB, usando fallback');
+                model = createFallbackModel();
+                scene.add(model);
             }
         );
     } else {
-        console.error('❌ GLTFLoader no está disponible');
+        // Usar fallback directamente si es file:// o no hay GLTFLoader
+        console.log('⚠️ Usando modelo fallback (file:// o GLTFLoader no disponible)');
+        model = createFallbackModel();
+        scene.add(model);
     }
 
     // Controles interactivos (mouse/touch)
