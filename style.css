@@ -1009,12 +1009,25 @@ img {
 /* Arrow indicator at the top */
 .career-timeline-arrow {
     position: absolute;
-    left: 0;
-    top: -3rem;
+    left: -3.5rem;
+    top: -2.5rem;
     font-size: 1.5rem;
     color: var(--accent);
     transform: rotate(-90deg);
     animation: pulse-arrow 2s ease-in-out infinite;
+    z-index: 3;
+}
+
+.career-timeline-arrow::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 1.5rem;
+    background: var(--accent);
+    animation: none;
 }
 
 @keyframes pulse-arrow {
@@ -1042,6 +1055,11 @@ img {
     bottom: -3rem;
     width: 2px;
     background: var(--accent);
+}
+
+/* First item line starts higher to connect with arrow */
+.career-timeline-item:first-child .career-timeline-line {
+    top: -1rem;
 }
 
 .career-timeline-item:last-child .career-timeline-line {
@@ -1536,12 +1554,21 @@ img {
     }
 
     .career-timeline-arrow {
-        left: -0.5rem;
+        left: -2.2rem;
         font-size: 1.2rem;
+        top: -2.2rem;
+    }
+
+    .career-timeline-arrow::after {
+        height: 1.2rem;
     }
 
     .career-timeline-line {
         left: -2.1rem;
+    }
+
+    .career-timeline-item:first-child .career-timeline-line {
+        top: -0.8rem;
     }
 
     .career-timeline-dot {
