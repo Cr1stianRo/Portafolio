@@ -593,7 +593,7 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
 
     // Determinar la ruta correcta según el protocolo
     const isFileProtocol = window.location.protocol === 'file:';
-    const rocketPath = isFileProtocol ? 'assets/models/rocket.glb' : '/assets/models/rocket.glb';
+    const rocketPath = 'assets/models/rocket.glb'; // Ruta relativa para que funcione en localhost y GitHub Pages
 
     if (typeof THREE.GLTFLoader !== 'undefined' && !isFileProtocol) {
         const loader = new THREE.GLTFLoader();
