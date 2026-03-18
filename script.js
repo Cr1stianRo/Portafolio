@@ -641,7 +641,7 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
         controls.enablePan = false;
         controls.rotateSpeed = 1.0;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 7.0; // Rotación rápida
+        controls.autoRotateSpeed = 15.0; // Rotación muy rápida
     }
 
     // Animación
@@ -653,7 +653,7 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
             controls.update();
         } else if (model) {
             // Fallback: rotación automática si no hay controles
-            model.rotation.y += 0.023;
+            model.rotation.y += 0.05;
         }
 
         renderer.render(scene, camera);
