@@ -481,60 +481,64 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
         antialias: true
     });
 
-    renderer.setSize(350, 350);
+    // Dimensiones iniciales
+    const isMobile = window.innerWidth <= 768;
+    const initialSize = isMobile ? 250 : 350;
+    renderer.setSize(initialSize, initialSize);
     renderer.setPixelRatio(window.devicePixelRatio);
-    camera.position.z = 3;
+    renderer.setClearColor(0x000000, 0); // Fondo completamente transparente
+    camera.position.z = 5; // Alejar cámara para ver mejor
 
     // Variable para el modelo
     let model = null;
 
+    // Luces (más intensas para ver el planeta)
+    const pointLight1 = new THREE.PointLight(0xffffff, 2);
+    pointLight1.position.set(5, 5, 5);
+    scene.add(pointLight1);
+
+    const pointLight2 = new THREE.PointLight(0x00d9ff, 1.5);
+    pointLight2.position.set(-5, -5, 5);
+    scene.add(pointLight2);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
     // Cargar modelo GLB
+    console.log('GLTFLoader disponible:', typeof THREE.GLTFLoader !== 'undefined');
+
     if (typeof THREE.GLTFLoader !== 'undefined') {
         const loader = new THREE.GLTFLoader();
+
+        console.log('Intentando cargar cohete desde: /assets/models/rocket.glb');
+
         loader.load(
-            'assets/models/brain_hologram.glb',
+            '/assets/models/rocket.glb',
             function (gltf) {
                 model = gltf.scene;
 
-                // Ajustar escala y posición
-                model.scale.set(2, 2, 2);
+                // Ajustar escala y posición (30% más pequeño: 2 * 0.7 = 1.4)
+                model.scale.set(1.4, 1.4, 1.4);
                 model.position.set(0, 0, 0);
 
-                // Aplicar material cyan brillante a todos los meshes
-                model.traverse((child) => {
-                    if (child.isMesh) {
-                        child.material = new THREE.MeshStandardMaterial({
-                            color: 0x00d9ff,
-                            metalness: 0.7,
-                            roughness: 0.2,
-                            emissive: 0x00d9ff,
-                            emissiveIntensity: 0.3,
-                            transparent: true,
-                            opacity: 0.9
-                        });
-                    }
-                });
-
                 scene.add(model);
+                console.log('✅ Cohete cargado correctamente', model);
             },
-            undefined,
+            function (xhr) {
+                if (xhr.lengthComputable) {
+                    const percent = (xhr.loaded / xhr.total * 100).toFixed(2);
+                    console.log('Cargando cohete: ' + percent + '%');
+                }
+            },
             function (error) {
-                console.error('Error cargando modelo 3D:', error);
+                console.error('❌ Error cargando cohete:', error);
+                console.log('Tipo de error:', error.type);
+                console.log('Target:', error.target);
             }
         );
+    } else {
+        console.error('❌ GLTFLoader no está disponible');
     }
-
-    // Luces
-    const pointLight1 = new THREE.PointLight(0x00d9ff, 1);
-    pointLight1.position.set(2, 2, 2);
-    scene.add(pointLight1);
-
-    const pointLight2 = new THREE.PointLight(0x00fff2, 0.8);
-    pointLight2.position.set(-2, -2, 2);
-    scene.add(pointLight2);
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
-    scene.add(ambientLight);
 
     // Controles interactivos (mouse/touch)
     let controls = null;
@@ -544,9 +548,9 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
         controls.dampingFactor = 0.05;
         controls.enableZoom = false;
         controls.enablePan = false;
-        controls.rotateSpeed = 0.8;
+        controls.rotateSpeed = 1.0;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.5;
+        controls.autoRotateSpeed = 1.5; // Rotación continua más visible
     }
 
     // Animación

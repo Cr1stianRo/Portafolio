@@ -23,3 +23,14 @@ desktop.ini
 
 # Context file (no needed in production)
 portafolio-contexto.txt
+
+# Modelos 3D no usados
+assets/models/brain_hologram.glb
+assets/models/planeta.glb
+
+# Claude y Playwright archivos temporales
+.claude/
+.mcp.json
+.playwright-mcp/
+*.png
+nul
