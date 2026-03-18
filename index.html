@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <!-- Initial Intro Hero -->
@@ -27,12 +28,11 @@
             <p class="intro-description" data-es="Desarrollador de Software apasionado por crear soluciones innovadoras" data-en="Software Developer passionate about creating innovative solutions">
                 Desarrollador de Software apasionado por crear soluciones innovadoras
             </p>
-            <button class="intro-cta" id="view-work-btn">
-                <span data-es="Ver mi trabajo" data-en="View my work">Ver mi trabajo</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </button>
+            <div class="tooltip-container" id="view-work-btn">
+                <span class="tooltip">🔥</span>
+                <span class="text" data-es="Proyectos 🚀" data-en="Projects 🚀">Proyectos 🚀</span>
+                <span data-es="Click aquí" data-en="Click here">Click aquí</span>
+            </div>
         </div>
 
         <!-- Scroll Indicator -->
@@ -138,15 +138,20 @@
     <section id="about" class="section section-dark">
         <div class="container">
             <h2 class="section-title" data-es="Sobre mí" data-en="About me">Sobre mí</h2>
-            <div class="about-content fade-in">
-                <p data-es="Estudiante de Ingeniería de Sistemas en la Universidad Libre de Pereira, apasionado por el desarrollo de software y las nuevas tecnologías. Actualmente trabajo como pasante IT en Comfamiliar Risaralda, donde desarrollo herramientas internas y soluciones de automatización."
-                   data-en="Systems Engineering student at Universidad Libre de Pereira, passionate about software development and new technologies. Currently working as an IT intern at Comfamiliar Risaralda, where I develop internal tools and automation solutions.">
-                    Estudiante de Ingeniería de Sistemas en la Universidad Libre de Pereira, apasionado por el desarrollo de software y las nuevas tecnologías. Actualmente trabajo como pasante IT en Comfamiliar Risaralda, donde desarrollo herramientas internas y soluciones de automatización.
-                </p>
-                <p data-es="Me especializo en desarrollo web full-stack, automatización con Google Workspace, y tecnologías emergentes como realidad aumentada (WebAR). Busco constantemente aprender nuevas habilidades y aplicarlas en proyectos innovadores que generen impacto real."
-                   data-en="I specialize in full-stack web development, automation with Google Workspace, and emerging technologies like augmented reality (WebAR). I'm constantly seeking to learn new skills and apply them in innovative projects that generate real impact.">
-                    Me especializo en desarrollo web full-stack, automatización con Google Workspace, y tecnologías emergentes como realidad aumentada (WebAR). Busco constantemente aprender nuevas habilidades y aplicarlas en proyectos innovadores que generen impacto real.
-                </p>
+            <div class="about-content-wrapper fade-in">
+                <div class="about-3d-container">
+                    <canvas id="about-3d-canvas"></canvas>
+                </div>
+                <div class="about-content">
+                    <p data-es="Estudiante de Ingeniería de Sistemas en la Universidad Libre de Pereira, apasionado por el desarrollo de software y las nuevas tecnologías. Actualmente trabajo como pasante IT en Comfamiliar Risaralda, donde desarrollo herramientas internas y soluciones de automatización."
+                       data-en="Systems Engineering student at Universidad Libre de Pereira, passionate about software development and new technologies. Currently working as an IT intern at Comfamiliar Risaralda, where I develop internal tools and automation solutions.">
+                        Estudiante de Ingeniería de Sistemas en la Universidad Libre de Pereira, apasionado por el desarrollo de software y las nuevas tecnologías. Actualmente trabajo como pasante IT en Comfamiliar Risaralda, donde desarrollo herramientas internas y soluciones de automatización.
+                    </p>
+                    <p data-es="Me especializo en desarrollo web full-stack, automatización con Google Workspace, y tecnologías emergentes como realidad aumentada (WebAR). Busco constantemente aprender nuevas habilidades y aplicarlas en proyectos innovadores que generen impacto real."
+                       data-en="I specialize in full-stack web development, automation with Google Workspace, and emerging technologies like augmented reality (WebAR). I'm constantly seeking to learn new skills and apply them in innovative projects that generate real impact.">
+                        Me especializo en desarrollo web full-stack, automatización con Google Workspace, y tecnologías emergentes como realidad aumentada (WebAR). Busco constantemente aprender nuevas habilidades y aplicarlas en proyectos innovadores que generen impacto real.
+                    </p>
+                </div>
             </div>
         </div>
     </section>

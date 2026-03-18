@@ -465,3 +465,73 @@ skillCards.forEach(card => {
     // Iniciar el carrusel
     startCarousel();
 });
+
+// ================================================================================
+// 3D MODEL — Modelo 3D rotando en sección "Sobre mí"
+// ================================================================================
+
+const aboutCanvas = document.getElementById('about-3d-canvas');
+if (aboutCanvas && typeof THREE !== 'undefined') {
+    // Configuración de la escena
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+        canvas: aboutCanvas,
+        alpha: true,
+        antialias: true
+    });
+
+    renderer.setSize(350, 350);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    camera.position.z = 3;
+
+    // Crear geometría (Torus Knot)
+    const geometry = new THREE.TorusKnotGeometry(0.8, 0.3, 100, 16);
+
+    // Material con gradiente cyan
+    const material = new THREE.MeshStandardMaterial({
+        color: 0x00d9ff,
+        metalness: 0.7,
+        roughness: 0.2,
+        emissive: 0x00d9ff,
+        emissiveIntensity: 0.2
+    });
+
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+
+    // Luces
+    const pointLight1 = new THREE.PointLight(0x00d9ff, 1);
+    pointLight1.position.set(2, 2, 2);
+    scene.add(pointLight1);
+
+    const pointLight2 = new THREE.PointLight(0x00fff2, 0.8);
+    pointLight2.position.set(-2, -2, 2);
+    scene.add(pointLight2);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+    scene.add(ambientLight);
+
+    // Animación
+    function animate3D() {
+        requestAnimationFrame(animate3D);
+
+        // Rotación suave
+        torusKnot.rotation.x += 0.005;
+        torusKnot.rotation.y += 0.01;
+
+        renderer.render(scene, camera);
+    }
+
+    animate3D();
+
+    // Responsive
+    function resize3D() {
+        const container = aboutCanvas.parentElement;
+        const size = Math.min(container.offsetWidth, 350);
+        renderer.setSize(size, size);
+    }
+
+    window.addEventListener('resize', resize3D);
+    resize3D();
+}
