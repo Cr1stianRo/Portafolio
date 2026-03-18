@@ -528,8 +528,12 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
     // Responsive
     function resize3D() {
         const container = aboutCanvas.parentElement;
-        const size = Math.min(container.offsetWidth, 350);
+        const isMobile = window.innerWidth <= 768;
+        const maxSize = isMobile ? 250 : 350;
+        const size = Math.min(container.offsetWidth, maxSize);
         renderer.setSize(size, size);
+        camera.aspect = 1;
+        camera.updateProjectionMatrix();
     }
 
     window.addEventListener('resize', resize3D);

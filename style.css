@@ -316,19 +316,48 @@ img {
 
     .tooltip-container .text {
         /* Siempre visible en móvil */
-        opacity: 1;
-        transform: scale(1);
-        position: static;
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
     }
 
     /* Ocultar tooltip en móvil */
     .tooltip-container .tooltip {
-        display: none;
+        display: none !important;
     }
 
     /* Ocultar el texto "Click aquí" en móvil */
     .tooltip-container span:last-child {
-        display: none;
+        display: none !important;
+    }
+
+    /* IMPORTANTE: Deshabilitar TODOS los efectos hover en móvil */
+    .tooltip-container:hover {
+        background: var(--accent) !important;
+        color: var(--bg-primary) !important;
+        box-shadow: 0 8px 15px rgba(0, 217, 255, 0.3) !important;
+        border-color: var(--accent) !important;
+    }
+
+    .tooltip-container:hover .text {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+    }
+
+    .tooltip-container:hover .tooltip {
+        display: none !important;
+        opacity: 0 !important;
+        scale: 0 !important;
+    }
+
+    .tooltip-container:hover span:last-child {
+        display: none !important;
+        transform: scale(0) !important;
     }
 
     /* Al hacer tap, efecto de escala */
@@ -681,9 +710,13 @@ img {
 
     .about-3d-container {
         width: 100%;
-        max-width: 350px;
-        height: 350px;
+        max-width: 250px;
+        height: 250px;
         margin: 0 auto;
+    }
+
+    #about-3d-canvas {
+        background: transparent;
     }
 }
 
