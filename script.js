@@ -506,43 +506,83 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
 
     // Función para crear modelo fallback (geometría simple)
     function createFallbackModel() {
-        console.log('🔄 Creando modelo fallback (cohete simple)');
+        console.log('🔄 Creando modelo fallback (cohete estilizado)');
 
-        // Crear un cohete simple con geometría básica
         const group = new THREE.Group();
 
-        // Cuerpo del cohete (cilindro)
-        const bodyGeometry = new THREE.CylinderGeometry(0.3, 0.3, 1.5, 32);
+        // Material del cuerpo (blanco brillante)
         const bodyMaterial = new THREE.MeshStandardMaterial({
-            color: 0x00d9ff,
-            metalness: 0.7,
-            roughness: 0.2,
-            emissive: 0x00d9ff,
-            emissiveIntensity: 0.2
+            color: 0xeeeeee,
+            metalness: 0.5,
+            roughness: 0.3
         });
+
+        // Material de detalles (rojo/cyan)
+        const detailMaterial = new THREE.MeshStandardMaterial({
+            color: 0xff3333,
+            metalness: 0.6,
+            roughness: 0.2
+        });
+
+        const finMaterial = new THREE.MeshStandardMaterial({
+            color: 0x00d9ff,
+            metalness: 0.8,
+            roughness: 0.1
+        });
+
+        // Cuerpo principal
+        const bodyGeometry = new THREE.CylinderGeometry(0.3, 0.3, 1.5, 32);
         const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
         group.add(body);
 
-        // Punta del cohete (cono)
+        // Banda roja decorativa
+        const bandGeometry = new THREE.CylinderGeometry(0.31, 0.31, 0.3, 32);
+        const band = new THREE.Mesh(bandGeometry, detailMaterial);
+        band.position.y = 0.2;
+        group.add(band);
+
+        // Punta del cohete (roja)
         const coneGeometry = new THREE.ConeGeometry(0.3, 0.6, 32);
-        const cone = new THREE.Mesh(coneGeometry, bodyMaterial);
+        const cone = new THREE.Mesh(coneGeometry, detailMaterial);
         cone.position.y = 1.05;
         group.add(cone);
 
-        // Aletas (3 aletas)
-        const finGeometry = new THREE.BoxGeometry(0.1, 0.5, 0.3);
-        for (let i = 0; i < 3; i++) {
-            const fin = new THREE.Mesh(finGeometry, bodyMaterial);
-            const angle = (i * 120) * (Math.PI / 180);
-            fin.position.x = Math.cos(angle) * 0.3;
-            fin.position.z = Math.sin(angle) * 0.3;
+        // Ventana
+        const windowGeometry = new THREE.CircleGeometry(0.15, 32);
+        const windowMaterial = new THREE.MeshStandardMaterial({
+            color: 0x88ddff,
+            metalness: 0.9,
+            roughness: 0.1,
+            emissive: 0x4499ff,
+            emissiveIntensity: 0.3
+        });
+        const window = new THREE.Mesh(windowGeometry, windowMaterial);
+        window.position.set(0, 0.5, 0.31);
+        group.add(window);
+
+        // Aletas (4 aletas cyan)
+        const finGeometry = new THREE.BoxGeometry(0.08, 0.5, 0.35);
+        for (let i = 0; i < 4; i++) {
+            const fin = new THREE.Mesh(finGeometry, finMaterial);
+            const angle = (i * 90) * (Math.PI / 180);
+            fin.position.x = Math.cos(angle) * 0.32;
+            fin.position.z = Math.sin(angle) * 0.32;
             fin.position.y = -0.5;
             fin.rotation.y = angle;
             group.add(fin);
         }
 
-        // Rotar para que apunte hacia arriba
-        group.rotation.x = 0;
+        // Motor (base oscura)
+        const engineGeometry = new THREE.CylinderGeometry(0.25, 0.2, 0.2, 32);
+        const engineMaterial = new THREE.MeshStandardMaterial({
+            color: 0x333333,
+            metalness: 0.8,
+            roughness: 0.2
+        });
+        const engine = new THREE.Mesh(engineGeometry, engineMaterial);
+        engine.position.y = -0.85;
+        group.add(engine);
+
         group.scale.set(0.8, 0.8, 0.8);
 
         return group;
@@ -566,8 +606,11 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
                 model = gltf.scene;
                 model.scale.set(1.4, 1.4, 1.4);
                 model.position.set(0, 0, 0);
+
+                // NO modificar materiales - usar colores/texturas originales del modelo
+
                 scene.add(model);
-                console.log('✅ Cohete GLB cargado correctamente');
+                console.log('✅ Cohete GLB cargado con colores originales');
             },
             function (xhr) {
                 if (xhr.lengthComputable) {
