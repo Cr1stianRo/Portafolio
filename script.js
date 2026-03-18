@@ -512,13 +512,31 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
     scene.add(ambientLight);
 
+    // Controles interactivos (mouse/touch)
+    let controls = null;
+    if (typeof THREE.OrbitControls !== 'undefined') {
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = false;
+        controls.enablePan = false;
+        controls.rotateSpeed = 0.8;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+    }
+
     // Animación
     function animate3D() {
         requestAnimationFrame(animate3D);
 
-        // Rotación suave
-        torusKnot.rotation.x += 0.005;
-        torusKnot.rotation.y += 0.01;
+        // Actualizar controles
+        if (controls) {
+            controls.update();
+        } else {
+            // Fallback: rotación automática si no hay controles
+            torusKnot.rotation.x += 0.005;
+            torusKnot.rotation.y += 0.01;
+        }
 
         renderer.render(scene, camera);
     }
