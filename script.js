@@ -485,20 +485,44 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
     renderer.setPixelRatio(window.devicePixelRatio);
     camera.position.z = 3;
 
-    // Crear geometría (Torus Knot)
-    const geometry = new THREE.TorusKnotGeometry(0.8, 0.3, 100, 16);
+    // Variable para el modelo
+    let model = null;
 
-    // Material con gradiente cyan
-    const material = new THREE.MeshStandardMaterial({
-        color: 0x00d9ff,
-        metalness: 0.7,
-        roughness: 0.2,
-        emissive: 0x00d9ff,
-        emissiveIntensity: 0.2
-    });
+    // Cargar modelo GLB
+    if (typeof THREE.GLTFLoader !== 'undefined') {
+        const loader = new THREE.GLTFLoader();
+        loader.load(
+            'assets/models/brain_hologram.glb',
+            function (gltf) {
+                model = gltf.scene;
 
-    const torusKnot = new THREE.Mesh(geometry, material);
-    scene.add(torusKnot);
+                // Ajustar escala y posición
+                model.scale.set(2, 2, 2);
+                model.position.set(0, 0, 0);
+
+                // Aplicar material cyan brillante a todos los meshes
+                model.traverse((child) => {
+                    if (child.isMesh) {
+                        child.material = new THREE.MeshStandardMaterial({
+                            color: 0x00d9ff,
+                            metalness: 0.7,
+                            roughness: 0.2,
+                            emissive: 0x00d9ff,
+                            emissiveIntensity: 0.3,
+                            transparent: true,
+                            opacity: 0.9
+                        });
+                    }
+                });
+
+                scene.add(model);
+            },
+            undefined,
+            function (error) {
+                console.error('Error cargando modelo 3D:', error);
+            }
+        );
+    }
 
     // Luces
     const pointLight1 = new THREE.PointLight(0x00d9ff, 1);
@@ -532,10 +556,9 @@ if (aboutCanvas && typeof THREE !== 'undefined') {
         // Actualizar controles
         if (controls) {
             controls.update();
-        } else {
+        } else if (model) {
             // Fallback: rotación automática si no hay controles
-            torusKnot.rotation.x += 0.005;
-            torusKnot.rotation.y += 0.01;
+            model.rotation.y += 0.005;
         }
 
         renderer.render(scene, camera);
