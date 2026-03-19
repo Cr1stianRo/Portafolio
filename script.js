@@ -372,7 +372,7 @@ if (canvas) {
 }
 
 // ================================================================================
-// SKILLS CAROUSEL — Carrusel automático de habilidades
+// SKILLS CAROUSEL — Carrusel automático con 4 efectos diferentes
 // ================================================================================
 
 const skillCards = document.querySelectorAll('.skill-card');
@@ -380,12 +380,20 @@ const skillCards = document.querySelectorAll('.skill-card');
 // Detectar si es dispositivo táctil
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-skillCards.forEach(card => {
+skillCards.forEach((card, cardIndex) => {
     const carousel = card.querySelector('.skill-carousel');
     const items = carousel.querySelectorAll('.skill-item');
     let currentIndex = 0;
     let intervalId = null;
     let isPaused = false;
+
+    // TODAS las cards usan animación slide-horizontal
+    const animationType = 'slide-horizontal';
+
+    // Agregar clase de animación a cada item
+    items.forEach(item => {
+        item.classList.add(`anim-${animationType}`);
+    });
 
     // Mostrar el primer item inicialmente
     if (items.length > 0) {
@@ -465,6 +473,12 @@ skillCards.forEach(card => {
     // Iniciar el carrusel
     startCarousel();
 });
+
+// Función para determinar el tipo de animación según el índice
+function getAnimationType(index) {
+    const animations = ['fade', 'slide-vertical', 'slide-horizontal', 'rotate-scale'];
+    return animations[index % 4];
+}
 
 // ================================================================================
 // 3D MODEL — Modelo 3D rotando en sección "Sobre mí"
