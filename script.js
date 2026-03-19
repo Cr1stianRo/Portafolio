@@ -409,10 +409,17 @@ skillCards.forEach((card, cardIndex) => {
         items[currentIndex].classList.add('active');
     }
 
-    // Iniciar carrusel automático
+    // Iniciar carrusel automático con efecto "ola" (delay escalonado)
     function startCarousel() {
         if (items.length <= 1) return;
-        intervalId = setInterval(nextItem, 2000); // Cambia cada 2 segundos
+
+        // Delay inicial para crear efecto ola
+        // Card 0: 0ms, Card 1: 500ms, Card 2: 1000ms, Card 3: 1500ms
+        const waveDelay = cardIndex * 500;
+
+        setTimeout(() => {
+            intervalId = setInterval(nextItem, 2000); // Cambia cada 2 segundos
+        }, waveDelay);
     }
 
     // Detener carrusel
@@ -470,7 +477,7 @@ skillCards.forEach((card, cardIndex) => {
         });
     }
 
-    // Iniciar el carrusel
+    // Iniciar el carrusel con efecto ola
     startCarousel();
 });
 

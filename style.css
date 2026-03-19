@@ -649,6 +649,20 @@ img {
     padding: 6rem 0;
 }
 
+/* Reducir espacio entre Sobre mí y Habilidades, y entre Habilidades y Experiencia */
+#about {
+    padding-bottom: 3rem;
+}
+
+#skills {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#experience {
+    padding-top: 3rem;
+}
+
 .section-dark {
     background: transparent;
 }
@@ -787,26 +801,28 @@ img {
     background: transparent;
 }
 
+/* Títulos de las cards en blanco */
 .skill-card .skill-card-title {
-    color: var(--accent);
+    color: #ffffff;
     font-weight: 500;
     font-size: 1.4rem;
     letter-spacing: 1px;
 }
 
+/* Sin efecto glow en los iconos */
 .skill-card .skill-item i {
-    filter: drop-shadow(0 8px 16px rgba(0, 217, 255, 0.4));
     transition: all 0.3s ease;
-}
-
-.skill-card:hover .skill-item i {
-    filter: drop-shadow(0 12px 24px rgba(0, 217, 255, 0.6));
 }
 
 .skill-card .skill-item span {
     color: var(--text-primary);
     font-weight: 400;
     font-size: 1rem;
+}
+
+/* Ocultar título "Habilidades Técnicas" */
+#skills .section-title {
+    display: none;
 }
 
 .skill-card-title {
