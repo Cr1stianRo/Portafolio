@@ -340,7 +340,8 @@ img {
         background: var(--accent);
         color: var(--bg-primary);
         border-color: var(--accent);
-        animation: pulse-mobile 2s ease-in-out infinite;
+        opacity: 0;
+        animation: fade-slide-up 1s ease-out 2s forwards, pulse-mobile 2s ease-in-out infinite 3s;
     }
 
     .tooltip-container .text {
@@ -2344,7 +2345,9 @@ img {
     }
 
     .project-blob {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
+        filter: blur(30px);
+        opacity: 0.8;
     }
 }
