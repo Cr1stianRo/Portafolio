@@ -266,12 +266,14 @@ if (canvas) {
     let mouse = { x: null, y: null, radius: 150 };
 
     // Ajustar canvas al tamaño de la ventana
+    let lastWidth = window.innerWidth;
+    let lastHeight = window.innerHeight;
+
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
 
     // Detectar posición del mouse
     canvas.addEventListener('mousemove', (e) => {
@@ -381,10 +383,26 @@ if (canvas) {
     initParticles();
     animate();
 
-    // Reinicializar al cambiar tamaño
+    // Reinicializar solo si hay cambio significativo de tamaño (no por scroll en móvil)
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        resizeCanvas();
-        initParticles();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const currentWidth = window.innerWidth;
+            const currentHeight = window.innerHeight;
+
+            // Solo reinicializar si el ancho cambió (rotación o cambio de ventana real)
+            // Ignorar cambios solo en altura (barra de direcciones en móvil)
+            if (Math.abs(currentWidth - lastWidth) > 50) {
+                resizeCanvas();
+                initParticles();
+                lastWidth = currentWidth;
+                lastHeight = currentHeight;
+            } else {
+                // Solo ajustar el canvas sin reiniciar partículas
+                resizeCanvas();
+            }
+        }, 150);
     });
 }
 
