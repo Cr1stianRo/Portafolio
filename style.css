@@ -1998,3 +1998,119 @@ img {
         padding: 0.875rem 1rem;
     }
 }
+
+/* ================================================================================
+   EDUCATION CARDS WITH 3D EFFECT
+   ================================================================================ */
+
+.education-card {
+    width: 100%;
+    min-height: 200px;
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    cursor: pointer;
+}
+
+.education-card-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 200px;
+}
+
+.education-card-date {
+    display: block;
+    color: var(--accent);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.education-card-content .education-card-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.education-card-content .education-card-para {
+    color: var(--accent);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.education-card:hover {
+    transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 217, 255, 0.3);
+    border-color: var(--accent-hover);
+}
+
+.education-card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(0, 0, 0, 0.2));
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    z-index: 1;
+}
+
+.education-card:hover:before {
+    transform: translateX(-100%);
+}
+
+.education-card:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(225deg, transparent, rgba(0, 0, 0, 0.2));
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    z-index: 1;
+}
+
+.education-card:hover:after {
+    transform: translateX(100%);
+}
+
+/* Grid para las education cards */
+.education-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .education-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education-card-content .education-card-title {
+        font-size: 1.25rem;
+    }
+
+    .education-card-content {
+        padding: 1.5rem;
+    }
+}
