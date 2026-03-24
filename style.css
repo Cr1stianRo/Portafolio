@@ -105,7 +105,17 @@ img {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1a2e 100%);
+    background: #000000;
+    animation: hero-bg-fade 1.5s ease-out forwards;
+}
+
+@keyframes hero-bg-fade {
+    0% {
+        background: #000000;
+    }
+    100% {
+        background: #000000;
+    }
 }
 
 /* Interactive Canvas Background */
@@ -116,6 +126,17 @@ img {
     width: 100%;
     height: 100%;
     z-index: 0;
+    opacity: 0;
+    animation: fade-in-canvas 2s ease-out 1s forwards;
+}
+
+@keyframes fade-in-canvas {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.3;
+    }
 }
 
 /* Intro Content */
@@ -125,18 +146,6 @@ img {
     text-align: center;
     max-width: 800px;
     padding: 2rem;
-    animation: intro-fade-in 1s ease-out;
-}
-
-@keyframes intro-fade-in {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .intro-greeting {
@@ -144,6 +153,8 @@ img {
     font-weight: 400;
     color: var(--text-secondary);
     margin-bottom: 1rem;
+    opacity: 0;
+    animation: fade-slide-up 1s ease-out 0.5s forwards;
 }
 
 .intro-name {
@@ -156,6 +167,8 @@ img {
     background-clip: text;
     margin: 0.5rem 0;
     line-height: 1.1;
+    opacity: 0;
+    animation: fade-slide-up 1s ease-out 1s forwards;
 }
 
 .intro-description {
@@ -165,6 +178,20 @@ img {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0;
+    animation: fade-slide-up 1s ease-out 1.5s forwards;
+}
+
+/* Animación secuencial fade + slide */
+@keyframes fade-slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Tooltip Container Button (Animated) */
@@ -188,6 +215,8 @@ img {
     background: transparent;
     font-family: var(--font-main);
     margin: 0 auto;
+    opacity: 0;
+    animation: fade-slide-up 1s ease-out 2s forwards;
 }
 
 .tooltip-container .text {
@@ -383,7 +412,19 @@ img {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-    animation: bounce 2s infinite;
+    opacity: 0;
+    animation: fade-in-bounce 1s ease-out 2.5s forwards, bounce 2s infinite 3.5s;
+}
+
+@keyframes fade-in-bounce {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
 }
 
 @keyframes bounce {
@@ -1090,6 +1131,15 @@ img {
     background: rgba(0, 217, 255, 0.1);
     color: var(--accent);
     border: 1px solid var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-status.completed {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.4);
 }
 
 /* ================================================================================
@@ -2112,5 +2162,189 @@ img {
 
     .education-card-content {
         padding: 1.5rem;
+    }
+}
+
+/* ================================================================================
+   FEATURED PROJECT CARDS WITH ANIMATED BLOB
+   ================================================================================ */
+
+.featured-project-card {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+        20px 20px 60px rgba(0, 0, 0, 0.5),
+        -20px -20px 60px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.featured-project-card:hover {
+    box-shadow:
+        25px 25px 70px rgba(0, 0, 0, 0.6),
+        -25px -25px 70px rgba(0, 217, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.featured-project-card-bg {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    z-index: 2;
+    background: rgba(31, 31, 31, 0.95);
+    backdrop-filter: blur(24px);
+    border-radius: 12px;
+    overflow: hidden;
+    outline: 2px solid rgba(0, 217, 255, 0.3);
+}
+
+.project-blob {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--accent), #0ea5e9);
+    opacity: 0.6;
+    filter: blur(40px);
+    animation: blob-bounce 8s infinite ease-in-out;
+}
+
+@keyframes blob-bounce {
+    0% {
+        transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+    25% {
+        transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+    }
+    50% {
+        transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+    }
+    75% {
+        transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+    }
+    100% {
+        transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+}
+
+.featured-project-card-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    flex: 1;
+}
+
+.featured-project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.featured-project-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.featured-project-badge {
+    background: rgba(0, 217, 255, 0.15);
+    color: var(--accent);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.featured-project-badge.completed {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.featured-project-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+}
+
+.featured-project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.featured-project-tag {
+    background: rgba(0, 217, 255, 0.1);
+    color: var(--accent);
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.featured-project-tag:hover {
+    background: rgba(0, 217, 255, 0.2);
+    border-color: rgba(0, 217, 255, 0.4);
+}
+
+.featured-project-link {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.featured-project-link:hover {
+    color: var(--accent-hover);
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .featured-project-card {
+        min-height: 320px;
+    }
+
+    .featured-project-card-content {
+        padding: 1.5rem;
+    }
+
+    .featured-project-title {
+        font-size: 1.25rem;
+    }
+
+    .project-blob {
+        width: 150px;
+        height: 150px;
     }
 }

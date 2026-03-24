@@ -108,6 +108,23 @@ const sections = document.querySelectorAll('section[id]');
 // Highlight active section on scroll
 function highlightActiveSection() {
     const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // Si estamos cerca del final de la página, activar la última sección (contacto)
+    if (scrollY + windowHeight >= documentHeight - 50) {
+        const lastSection = sections[sections.length - 1];
+        if (lastSection) {
+            const lastSectionId = lastSection.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${lastSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+            return;
+        }
+    }
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop - 100;

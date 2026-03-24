@@ -42,64 +42,183 @@
     <!-- Project Detail -->
     <main class="project-detail">
         <div class="container">
-            <a href="index.html" class="back-button">
+            <a href="javascript:history.back()" class="back-button">
                 <span>←</span>
-                <span data-es="Volver a proyectos" data-en="Back to projects">Volver a proyectos</span>
+                <span data-es="Volver" data-en="Back">Volver</span>
             </a>
 
             <div class="project-detail-header">
-                <h1 class="project-detail-title">ProyectoU — CMS</h1>
+                <h1 class="project-detail-title">ProyectoU — CMS para Hogares Geriátricos</h1>
 
                 <div class="project-badges">
-                    <span class="badge badge-status" data-es="En desarrollo" data-en="In progress">En desarrollo</span>
+                    <span class="badge badge-status completed" data-es="Finalizado" data-en="Completed">Finalizado</span>
                     <span class="tag">React 19</span>
                     <span class="tag">Node.js</span>
-                    <span class="tag">Express</span>
+                    <span class="tag">Express 5</span>
                     <span class="tag">MongoDB</span>
+                    <span class="tag">Vite</span>
                 </div>
             </div>
 
             <!-- Descripción -->
             <section class="project-section fade-in">
                 <h2 data-es="Descripción" data-en="Description">Descripción</h2>
-                <div class="placeholder-box">
-                    <p data-es="Próximamente / Coming soon" data-en="Coming soon">Próximamente / Coming soon</p>
-                </div>
+                <p data-es="Sistema de Gestión de Contenido (CMS) multi-tenant especializado para la creación y administración de sitios web de hogares geriátricos. Permite a los usuarios crear, personalizar y exportar sitios web completos sin necesidad de conocimientos técnicos."
+                   data-en="Multi-tenant Content Management System (CMS) specialized for creating and managing nursing home websites. Allows users to create, customize, and export complete websites without technical knowledge.">
+                    Sistema de Gestión de Contenido (CMS) multi-tenant especializado para la creación y administración de sitios web de hogares geriátricos. Permite a los usuarios crear, personalizar y exportar sitios web completos sin necesidad de conocimientos técnicos.
+                </p>
+                <p data-es="Desarrollado como proyecto universitario en la Universidad Libre Pereira, este sistema ofrece una plataforma modular donde cada sección de la página web es un módulo independiente con su propio editor visual, API endpoint y controlador. Todo el contenido se almacena en MongoDB y se renderiza dinámicamente en el frontend."
+                   data-en="Developed as a university project at Universidad Libre Pereira, this system offers a modular platform where each section of the website is an independent module with its own visual editor, API endpoint, and controller. All content is stored in MongoDB and dynamically rendered on the frontend.">
+                    Desarrollado como proyecto universitario en la Universidad Libre Pereira, este sistema ofrece una plataforma modular donde cada sección de la página web es un módulo independiente con su propio editor visual, API endpoint y controlador. Todo el contenido se almacena en MongoDB y se renderiza dinámicamente en el frontend.
+                </p>
             </section>
 
             <!-- Características -->
             <section class="project-section fade-in">
                 <h2 data-es="Características principales" data-en="Key Features">Características principales</h2>
-                <div class="placeholder-box">
-                    <p data-es="Próximamente / Coming soon" data-en="Coming soon">Próximamente / Coming soon</p>
-                </div>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Sistema multi-tenant:" data-en="Multi-tenant system:">Sistema multi-tenant:</strong>
+                        <span data-es="Múltiples usuarios, cada uno con su propio sitio web independiente" data-en="Multiple users, each with their own independent website">Múltiples usuarios, cada uno con su propio sitio web independiente</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="10 módulos editables:" data-en="10 editable modules:">10 módulos editables:</strong>
+                        <span data-es="Hero, servicios, galería, valores, equipo, video, mapa, carrusel y más" data-en="Hero, services, gallery, values, team, video, map, carousel, and more">Hero, servicios, galería, valores, equipo, video, mapa, carrusel y más</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Edición visual sin código:" data-en="Visual editing without code:">Edición visual sin código:</strong>
+                        <span data-es="Panel de administración intuitivo con vista previa en tiempo real" data-en="Intuitive admin panel with real-time preview">Panel de administración intuitivo con vista previa en tiempo real</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Personalización completa:" data-en="Complete customization:">Personalización completa:</strong>
+                        <span data-es="Colores, fuentes, bordes y diseño totalmente personalizables" data-en="Fully customizable colors, fonts, borders, and design">Colores, fuentes, bordes y diseño totalmente personalizables</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Exportación a sitio estático:" data-en="Export to static site:">Exportación a sitio estático:</strong>
+                        <span data-es="Genera archivo ZIP con HTML + CSS + imágenes listo para deploy" data-en="Generates ZIP file with HTML + CSS + images ready for deployment">Genera archivo ZIP con HTML + CSS + imágenes listo para deploy</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Autenticación segura:" data-en="Secure authentication:">Autenticación segura:</strong>
+                        <span data-es="JWT con sesiones de 7 días y hash bcrypt para contraseñas" data-en="JWT with 7-day sessions and bcrypt hash for passwords">JWT con sesiones de 7 días y hash bcrypt para contraseñas</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Gestión de imágenes:" data-en="Image management:">Gestión de imágenes:</strong>
+                        <span data-es="Subida y almacenamiento de imágenes con validación de tipo y tamaño" data-en="Image upload and storage with type and size validation">Subida y almacenamiento de imágenes con validación de tipo y tamaño</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Diseño responsive:" data-en="Responsive design:">Diseño responsive:</strong>
+                        <span data-es="Bootstrap 5 garantiza compatibilidad en todos los dispositivos" data-en="Bootstrap 5 ensures compatibility across all devices">Bootstrap 5 garantiza compatibilidad en todos los dispositivos</span>
+                    </li>
+                </ul>
             </section>
 
             <!-- Stack detallado -->
             <section class="project-section fade-in">
                 <h2 data-es="Stack tecnológico" data-en="Tech Stack">Stack tecnológico</h2>
-                <div class="placeholder-box">
-                    <p data-es="Próximamente / Coming soon" data-en="Coming soon">Próximamente / Coming soon</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;">
+                        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 1rem;">Backend</h3>
+                        <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
+                            <li>• Node.js</li>
+                            <li>• Express 5.2.1</li>
+                            <li>• MongoDB + Mongoose 9.0.0</li>
+                            <li>• JWT (jsonwebtoken 9.0.2)</li>
+                            <li>• Bcrypt 6.0.0</li>
+                            <li>• Multer 2.0.2</li>
+                            <li>• Archiver 7.0.1</li>
+                            <li>• CORS 2.8.5</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;">
+                        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 1rem;">Frontend</h3>
+                        <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
+                            <li>• React 19.2.3</li>
+                            <li>• Vite 7.3.1</li>
+                            <li>• React Router DOM 7.12.0</li>
+                            <li>• Axios 1.13.2</li>
+                            <li>• Bootstrap 5.3.3</li>
+                            <li>• Bootstrap Icons</li>
+                            <li>• Google Fonts (Poppins)</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
-            <!-- Screenshots / Demo -->
+            <!-- Arquitectura -->
             <section class="project-section fade-in">
-                <h2 data-es="Capturas y demo" data-en="Screenshots & Demo">Capturas y demo</h2>
-                <div class="placeholder-box">
-                    <p data-es="Próximamente / Coming soon" data-en="Coming soon">Próximamente / Coming soon</p>
+                <h2 data-es="Arquitectura" data-en="Architecture">Arquitectura</h2>
+                <p data-es="Aplicación Full-Stack MERN con arquitectura modular:"
+                   data-en="Full-Stack MERN application with modular architecture:">
+                    Aplicación Full-Stack MERN con arquitectura modular:
+                </p>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+                        <strong data-es="Frontend (React):" data-en="Frontend (React):">Frontend (React):</strong>
+                        <span data-es="SPA con Vite, Context API para autenticación, y Bootstrap 5 para UI responsive" data-en="SPA with Vite, Context API for authentication, and Bootstrap 5 for responsive UI">SPA con Vite, Context API para autenticación, y Bootstrap 5 para UI responsive</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+                        <strong data-es="Backend (Node.js):" data-en="Backend (Node.js):">Backend (Node.js):</strong>
+                        <span data-es="API REST con Express, JWT para auth, Multer para archivos, Archiver para ZIP" data-en="REST API with Express, JWT for auth, Multer for files, Archiver for ZIP">API REST con Express, JWT para auth, Multer para archivos, Archiver para ZIP</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+                        <strong data-es="Base de datos:" data-en="Database:">Base de datos:</strong>
+                        <span data-es="MongoDB con modelos User y PageConfig (almacena todas las secciones por usuario)" data-en="MongoDB with User and PageConfig models (stores all sections per user)">MongoDB con modelos User y PageConfig (almacena todas las secciones por usuario)</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Funcionalidades destacadas -->
+            <section class="project-section fade-in">
+                <h2 data-es="Funcionalidades destacadas" data-en="Highlighted Features">Funcionalidades destacadas</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Panel de Administración" data-en="Admin Panel">Panel de Administración</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="Interfaz intuitiva con tarjetas para cada módulo, vista previa en tiempo real y navegación fluida" data-en="Intuitive interface with cards for each module, real-time preview, and smooth navigation">Interfaz intuitiva con tarjetas para cada módulo, vista previa en tiempo real y navegación fluida</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Editor Visual" data-en="Visual Editor">Editor Visual</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="Sistema de edición en dos columnas: formulario a la izquierda y vista previa en vivo a la derecha" data-en="Two-column editing system: form on the left and live preview on the right">Sistema de edición en dos columnas: formulario a la izquierda y vista previa en vivo a la derecha</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Exportación Inteligente" data-en="Smart Export">Exportación Inteligente</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="Genera sitio estático completo con HTML, CSS optimizado e imágenes descargadas en paralelo" data-en="Generates complete static site with HTML, optimized CSS, and images downloaded in parallel">Genera sitio estático completo con HTML, CSS optimizado e imágenes descargadas en paralelo</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Pantalla de Bienvenida" data-en="Welcome Screen">Pantalla de Bienvenida</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="Landing page inmersiva con animaciones, partículas flotantes y gradientes cálidos" data-en="Immersive landing page with animations, floating particles, and warm gradients">Landing page inmersiva con animaciones, partículas flotantes y gradientes cálidos</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Sistema de Temas" data-en="Theme System">Sistema de Temas</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="ThemeProvider que aplica CSS variables dinámicas según la configuración del usuario" data-en="ThemeProvider that applies dynamic CSS variables based on user configuration">ThemeProvider que aplica CSS variables dinámicas según la configuración del usuario</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Integración WhatsApp" data-en="WhatsApp Integration">Integración WhatsApp</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="CTA de contacto con enlace directo a WhatsApp y mensajes pre-rellenados personalizables" data-en="Contact CTA with direct WhatsApp link and customizable pre-filled messages">CTA de contacto con enlace directo a WhatsApp y mensajes pre-rellenados personalizables</p>
+                    </div>
                 </div>
             </section>
 
             <!-- Links -->
             <section class="project-section fade-in">
                 <h2>Links</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;" data-es="Proyecto universitario desarrollado para la Universidad Libre Pereira" data-en="University project developed for Universidad Libre Pereira">Proyecto universitario desarrollado para la Universidad Libre Pereira</p>
                 <div class="project-links">
-                    <a href="#" class="btn btn-primary">
+                    <a href="https://github.com/Cr1stianRo/ProyectoU" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                         <span data-es="Ver en GitHub" data-en="View on GitHub">Ver en GitHub</span>
                     </a>
-                    <a href="#" class="btn btn-secondary">
-                        <span data-es="Ver demo" data-en="View demo">Ver demo</span>
+                    <a href="#" class="btn btn-secondary" style="opacity: 0.6; cursor: not-allowed;">
+                        <span data-es="Demo próximamente" data-en="Demo coming soon">Demo próximamente</span>
                     </a>
                 </div>
             </section>

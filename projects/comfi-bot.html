@@ -42,13 +42,13 @@
     <!-- Project Detail -->
     <main class="project-detail">
         <div class="container">
-            <a href="index.html" class="back-button">
+            <a href="javascript:history.back()" class="back-button">
                 <span>←</span>
-                <span data-es="Volver a proyectos" data-en="Back to projects">Volver a proyectos</span>
+                <span data-es="Volver" data-en="Back">Volver</span>
             </a>
 
             <div class="project-detail-header">
-                <h1 class="project-detail-title">Comfi Bot</h1>
+                <h1 class="project-detail-title">Comfi Bot — Chatbot IA para Soporte Interno</h1>
 
                 <div class="project-badges">
                     <span class="badge badge-status" data-es="En desarrollo" data-en="In progress">En desarrollo</span>
@@ -56,50 +56,158 @@
                     <span class="tag">OpenAI API</span>
                     <span class="tag">Firebase Firestore</span>
                     <span class="tag">Google Sheets</span>
+                    <span class="tag">Google Chat API</span>
                 </div>
             </div>
 
             <!-- Descripción -->
             <section class="project-section fade-in">
                 <h2 data-es="Descripción" data-en="Description">Descripción</h2>
-                <div class="placeholder-box">
-                    <p data-es="Próximamente / Coming soon" data-en="Coming soon">Próximamente / Coming soon</p>
-                </div>
+                <p data-es="Comfi es un chatbot conversacional desarrollado en Google Apps Script e integrado directamente en Google Chat, diseñado para el departamento de Sistemas de Comfamiliar Risaralda. El bot recibe solicitudes de soporte de los colaboradores, las interpreta mediante inteligencia artificial (GPT-4o-mini de OpenAI) y las enruta automáticamente al agente disponible del área correspondiente."
+                   data-en="Comfi is a conversational chatbot developed in Google Apps Script and integrated directly into Google Chat, designed for the Systems department of Comfamiliar Risaralda. The bot receives support requests from employees, interprets them using artificial intelligence (OpenAI's GPT-4o-mini), and automatically routes them to the available agent in the corresponding area.">
+                    Comfi es un chatbot conversacional desarrollado en Google Apps Script e integrado directamente en Google Chat, diseñado para el departamento de Sistemas de Comfamiliar Risaralda. El bot recibe solicitudes de soporte de los colaboradores, las interpreta mediante inteligencia artificial (GPT-4o-mini de OpenAI) y las enruta automáticamente al agente disponible del área correspondiente.
+                </p>
+                <p data-es="El sistema utiliza un enrutamiento de dos capas: la IA analiza el mensaje y determina el área y tipo de soporte requerido, y un algoritmo de round-robin asigna el caso al agente óptimo según disponibilidad. Los casos quedan registrados en Firebase Firestore y sincronizados en Google Sheets, donde el equipo puede hacerles seguimiento."
+                   data-en="The system uses two-layer routing: AI analyzes the message and determines the area and type of support required, and a round-robin algorithm assigns the case to the optimal agent based on availability. Cases are recorded in Firebase Firestore and synchronized to Google Sheets, where the team can track them.">
+                    El sistema utiliza un enrutamiento de dos capas: la IA analiza el mensaje y determina el área y tipo de soporte requerido, y un algoritmo de round-robin asigna el caso al agente óptimo según disponibilidad. Los casos quedan registrados en Firebase Firestore y sincronizados en Google Sheets, donde el equipo puede hacerles seguimiento.
+                </p>
+                <p data-es="La configuración de áreas y personal se gestiona desde una hoja de cálculo, lo que permite actualizar el sistema sin tocar el código."
+                   data-en="Area and personnel configuration is managed from a spreadsheet, allowing the system to be updated without touching the code.">
+                    La configuración de áreas y personal se gestiona desde una hoja de cálculo, lo que permite actualizar el sistema sin tocar el código.
+                </p>
             </section>
 
             <!-- Características -->
             <section class="project-section fade-in">
                 <h2 data-es="Características principales" data-en="Key Features">Características principales</h2>
-                <div class="placeholder-box">
-                    <p data-es="Próximamente / Coming soon" data-en="Coming soon">Próximamente / Coming soon</p>
-                </div>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Enrutamiento inteligente con IA:" data-en="AI-powered intelligent routing:">Enrutamiento inteligente con IA:</strong>
+                        <span data-es="GPT-4o-mini analiza el mensaje y determina automáticamente el área y tipo de soporte" data-en="GPT-4o-mini analyzes the message and automatically determines the area and type of support">GPT-4o-mini analiza el mensaje y determina automáticamente el área y tipo de soporte</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Asignación por round-robin:" data-en="Round-robin assignment:">Asignación por round-robin:</strong>
+                        <span data-es="Algoritmo que distribuye casos equitativamente entre agentes disponibles" data-en="Algorithm that distributes cases fairly among available agents">Algoritmo que distribuye casos equitativamente entre agentes disponibles</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Registro en tiempo real:" data-en="Real-time logging:">Registro en tiempo real:</strong>
+                        <span data-es="Todos los casos se almacenan en Firebase Firestore con timestamps y metadata completa" data-en="All cases are stored in Firebase Firestore with timestamps and complete metadata">Todos los casos se almacenan en Firebase Firestore con timestamps y metadata completa</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Sincronización con Google Sheets:" data-en="Google Sheets synchronization:">Sincronización con Google Sheets:</strong>
+                        <span data-es="Dashboard automático para seguimiento y análisis de casos del equipo" data-en="Automatic dashboard for team case tracking and analysis">Dashboard automático para seguimiento y análisis de casos del equipo</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Configuración dinámica:" data-en="Dynamic configuration:">Configuración dinámica:</strong>
+                        <span data-es="Áreas y personal se gestionan desde hojas de cálculo sin modificar código" data-en="Areas and personnel are managed from spreadsheets without modifying code">Áreas y personal se gestionan desde hojas de cálculo sin modificar código</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Integración nativa:" data-en="Native integration:">Integración nativa:</strong>
+                        <span data-es="Funciona directamente en Google Chat sin instalaciones adicionales" data-en="Works directly in Google Chat without additional installations">Funciona directamente en Google Chat sin instalaciones adicionales</span>
+                    </li>
+                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                        <strong data-es="Respuestas contextuales:" data-en="Contextual responses:">Respuestas contextuales:</strong>
+                        <span data-es="El bot entiende lenguaje natural y proporciona confirmaciones personalizadas" data-en="The bot understands natural language and provides personalized confirmations">El bot entiende lenguaje natural y proporciona confirmaciones personalizadas</span>
+                    </li>
+                </ul>
             </section>
 
             <!-- Stack detallado -->
             <section class="project-section fade-in">
                 <h2 data-es="Stack tecnológico" data-en="Tech Stack">Stack tecnológico</h2>
-                <div class="placeholder-box">
-                    <p data-es="Próximamente / Coming soon" data-en="Coming soon">Próximamente / Coming soon</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;">
+                        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 1rem;" data-es="Núcleo" data-en="Core">Núcleo</h3>
+                        <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
+                            <li>• Google Apps Script</li>
+                            <li>• OpenAI API (GPT-4o-mini)</li>
+                            <li>• Google Chat API</li>
+                            <li>• Google Cloud Platform</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem;">
+                        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 1rem;" data-es="Almacenamiento" data-en="Storage">Almacenamiento</h3>
+                        <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
+                            <li>• Firebase Firestore</li>
+                            <li>• Google Sheets</li>
+                            <li>• Properties Service</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
-            <!-- Screenshots / Demo -->
+            <!-- Arquitectura -->
             <section class="project-section fade-in">
-                <h2 data-es="Capturas y demo" data-en="Screenshots & Demo">Capturas y demo</h2>
-                <div class="placeholder-box">
-                    <p data-es="Próximamente / Coming soon" data-en="Coming soon">Próximamente / Coming soon</p>
+                <h2 data-es="Flujo de trabajo" data-en="Workflow">Flujo de trabajo</h2>
+                <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.5rem; margin-top: 1rem;">
+                    <ol style="color: var(--text-secondary); line-height: 1.8;">
+                        <li data-es="Colaborador envía mensaje de soporte en Google Chat" data-en="Employee sends support message in Google Chat">Colaborador envía mensaje de soporte en Google Chat</li>
+                        <li data-es="Comfi Bot recibe el mensaje vía webhook" data-en="Comfi Bot receives the message via webhook">Comfi Bot recibe el mensaje vía webhook</li>
+                        <li data-es="El mensaje se envía a GPT-4o-mini para análisis" data-en="The message is sent to GPT-4o-mini for analysis">El mensaje se envía a GPT-4o-mini para análisis</li>
+                        <li data-es="La IA determina el área (redes, software, hardware, etc.) y el tipo de caso" data-en="AI determines the area (network, software, hardware, etc.) and case type">La IA determina el área (redes, software, hardware, etc.) y el tipo de caso</li>
+                        <li data-es="Algoritmo round-robin selecciona al agente disponible óptimo" data-en="Round-robin algorithm selects the optimal available agent">Algoritmo round-robin selecciona al agente disponible óptimo</li>
+                        <li data-es="Se crea el registro en Firestore con toda la metadata" data-en="Record is created in Firestore with all metadata">Se crea el registro en Firestore con toda la metadata</li>
+                        <li data-es="Se sincroniza automáticamente en Google Sheets" data-en="Automatically syncs to Google Sheets">Se sincroniza automáticamente en Google Sheets</li>
+                        <li data-es="El bot notifica al colaborador con confirmación personalizada" data-en="Bot notifies the employee with personalized confirmation">El bot notifica al colaborador con confirmación personalizada</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Funcionalidades destacadas -->
+            <section class="project-section fade-in">
+                <h2 data-es="Ventajas del sistema" data-en="System advantages">Ventajas del sistema</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Automatización total" data-en="Complete automation">Automatización total</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="Elimina la asignación manual de casos, reduciendo tiempos de respuesta" data-en="Eliminates manual case assignment, reducing response times">Elimina la asignación manual de casos, reduciendo tiempos de respuesta</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Distribución equitativa" data-en="Fair distribution">Distribución equitativa</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="Round-robin garantiza carga balanceada entre todos los agentes" data-en="Round-robin ensures balanced workload among all agents">Round-robin garantiza carga balanceada entre todos los agentes</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Trazabilidad completa" data-en="Complete traceability">Trazabilidad completa</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="Registro permanente en Firestore para auditorías y análisis" data-en="Permanent record in Firestore for audits and analysis">Registro permanente en Firestore para auditorías y análisis</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.25rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;" data-es="Configuración flexible" data-en="Flexible configuration">Configuración flexible</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;" data-es="Personal y áreas se actualizan desde hojas sin tocar código" data-en="Personnel and areas are updated from sheets without touching code">Personal y áreas se actualizan desde hojas sin tocar código</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Estado del proyecto -->
+            <section class="project-section fade-in">
+                <h2 data-es="Estado del proyecto" data-en="Project status">Estado del proyecto</h2>
+                <div style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 8px; padding: 1.5rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;" data-es="Comfi Bot está actualmente en desarrollo activo como parte de mi pasantía en el departamento de Sistemas de Comfamiliar Risaralda. El sistema ya está operativo y procesando solicitudes reales del equipo interno."
+                       data-en="Comfi Bot is currently in active development as part of my internship in the Systems department at Comfamiliar Risaralda. The system is already operational and processing real requests from the internal team.">
+                        Comfi Bot está actualmente en desarrollo activo como parte de mi pasantía en el departamento de Sistemas de Comfamiliar Risaralda. El sistema ya está operativo y procesando solicitudes reales del equipo interno.
+                    </p>
+                    <p style="color: var(--text-secondary);" data-es="Por tratarse de un proyecto interno corporativo, el código fuente no está disponible públicamente. Sin embargo, este caso de uso demuestra la aplicación práctica de inteligencia artificial para automatizar procesos de soporte técnico en entornos empresariales."
+                       data-en="As an internal corporate project, the source code is not publicly available. However, this use case demonstrates the practical application of artificial intelligence to automate technical support processes in enterprise environments.">
+                        Por tratarse de un proyecto interno corporativo, el código fuente no está disponible públicamente. Sin embargo, este caso de uso demuestra la aplicación práctica de inteligencia artificial para automatizar procesos de soporte técnico en entornos empresariales.
+                    </p>
                 </div>
             </section>
 
             <!-- Links -->
             <section class="project-section fade-in">
-                <h2>Links</h2>
+                <h2 data-es="Información adicional" data-en="Additional information">Información adicional</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;" data-es="Proyecto desarrollado durante mi pasantía en Comfamiliar Risaralda (Feb 2026 — Presente)"
+                   data-en="Project developed during my internship at Comfamiliar Risaralda (Feb 2026 — Present)">
+                    Proyecto desarrollado durante mi pasantía en Comfamiliar Risaralda (Feb 2026 — Presente)
+                </p>
                 <div class="project-links">
-                    <a href="#" class="btn btn-primary">
-                        <span data-es="Ver en GitHub" data-en="View on GitHub">Ver en GitHub</span>
-                    </a>
-                    <a href="#" class="btn btn-secondary">
-                        <span data-es="Ver demo" data-en="View demo">Ver demo</span>
+                    <a href="../index.html#contact" class="btn btn-primary">
+                        <span data-es="Contactar para más información" data-en="Contact for more information">Contactar para más información</span>
                     </a>
                 </div>
             </section>
