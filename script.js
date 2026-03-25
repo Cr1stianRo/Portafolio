@@ -407,119 +407,156 @@ if (canvas) {
 }
 
 // ================================================================================
-// SKILLS CAROUSEL — Carrusel automático con 4 efectos diferentes
+// SKILLS CAROUSEL & MODAL — Carrusel automático + Modal al hacer click
 // ================================================================================
 
 const skillCards = document.querySelectorAll('.skill-card');
+const skillsModal = document.getElementById('skills-modal');
+const skillsModalOverlay = skillsModal?.querySelector('.skills-modal-overlay');
+const skillsModalContent = skillsModal?.querySelector('.skills-modal-content');
+const skillsModalClose = skillsModal?.querySelector('.skills-modal-close');
+const skillsModalTitle = skillsModal?.querySelector('.skills-modal-title');
+const skillsModalGrid = skillsModal?.querySelector('.skills-modal-grid');
 
-// Detectar si es dispositivo táctil
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+// Array para guardar las instancias de carruseles
+const carouselInstances = [];
 
 skillCards.forEach((card, cardIndex) => {
     const carousel = card.querySelector('.skill-carousel');
     const items = carousel.querySelectorAll('.skill-item');
-    let currentIndex = 0;
-    let intervalId = null;
-    let isPaused = false;
+
+    const instance = {
+        card: card,
+        items: items,
+        currentIndex: 0,
+        intervalId: null,
+        cardIndex: cardIndex
+    };
 
     // TODAS las cards usan animación slide-horizontal
     const animationType = 'slide-horizontal';
 
-    // Agregar clase de animación a cada item
-    items.forEach(item => {
+    // Limpiar y configurar items
+    items.forEach((item, index) => {
         item.classList.add(`anim-${animationType}`);
+        item.classList.remove('active'); // Limpiar cualquier clase active previa
     });
 
-    // Mostrar el primer item inicialmente
+    // Mostrar solo el primer item inicialmente
     if (items.length > 0) {
         items[0].classList.add('active');
     }
 
     // Función para cambiar al siguiente item
     function nextItem() {
-        if (isPaused || items.length <= 1) return;
+        if (instance.items.length <= 1) return;
 
-        items[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % items.length;
-        items[currentIndex].classList.add('active');
+        instance.items[instance.currentIndex].classList.remove('active');
+        instance.currentIndex = (instance.currentIndex + 1) % instance.items.length;
+        instance.items[instance.currentIndex].classList.add('active');
     }
 
     // Iniciar carrusel automático con efecto "ola" (delay escalonado)
     function startCarousel() {
-        if (items.length <= 1) return;
+        if (instance.items.length <= 1) return;
+
+        // Limpiar intervalo anterior si existe
+        if (instance.intervalId) {
+            clearInterval(instance.intervalId);
+            instance.intervalId = null;
+        }
 
         // Delay inicial para crear efecto ola
-        // Card 0: 0ms, Card 1: 500ms, Card 2: 1000ms, Card 3: 1500ms
         const waveDelay = cardIndex * 500;
 
         setTimeout(() => {
-            intervalId = setInterval(nextItem, 2000); // Cambia cada 2 segundos
+            instance.intervalId = setInterval(nextItem, 2000); // Cambia cada 2 segundos
         }, waveDelay);
     }
 
     // Detener carrusel
     function stopCarousel() {
-        if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null;
+        if (instance.intervalId) {
+            clearInterval(instance.intervalId);
+            instance.intervalId = null;
         }
     }
 
-    // Pausar y mostrar todos los items
-    function pauseAndShowAll() {
-        isPaused = true;
-        stopCarousel();
-        card.classList.add('paused');
-        items.forEach(item => item.classList.add('active'));
-    }
+    // Guardar funciones en la instancia
+    instance.start = startCarousel;
+    instance.stop = stopCarousel;
 
-    // Reanudar carrusel
-    function resumeCarousel() {
-        isPaused = false;
-        card.classList.remove('paused');
+    // Mostrar modal con todas las skills
+    function showSkillsModal() {
+        const title = card.querySelector('.skill-card-title').textContent;
+        skillsModalTitle.textContent = title;
 
-        // Resetear: solo mostrar el item actual
-        items.forEach((item, index) => {
-            if (index !== currentIndex) {
-                item.classList.remove('active');
-            }
+        // Limpiar grid anterior
+        skillsModalGrid.innerHTML = '';
+
+        // Agregar todos los items al modal
+        items.forEach(item => {
+            const modalItem = document.createElement('div');
+            modalItem.className = 'skills-modal-item';
+
+            // Clonar el icono
+            const icon = item.querySelector('i, svg').cloneNode(true);
+            const text = document.createElement('span');
+            text.textContent = item.querySelector('span').textContent;
+
+            modalItem.appendChild(icon);
+            modalItem.appendChild(text);
+            skillsModalGrid.appendChild(modalItem);
         });
 
-        startCarousel();
+        // Mostrar modal
+        skillsModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
-    // Event listeners
-    if (isTouchDevice) {
-        // En móvil: solo tap para toggle
-        card.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (isPaused) {
-                resumeCarousel();
-            } else {
-                pauseAndShowAll();
-            }
-        });
-    } else {
-        // En desktop: hover + click
-        card.addEventListener('mouseenter', pauseAndShowAll);
-        card.addEventListener('mouseleave', resumeCarousel);
-        card.addEventListener('click', () => {
-            if (isPaused) {
-                resumeCarousel();
-            } else {
-                pauseAndShowAll();
-            }
-        });
-    }
+    // Event listener - Click para abrir modal
+    card.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Detener TODOS los carruseles
+        carouselInstances.forEach(inst => inst.stop());
+        showSkillsModal();
+    });
+
+    // Guardar instancia
+    carouselInstances.push(instance);
 
     // Iniciar el carrusel con efecto ola
     startCarousel();
 });
 
-// Función para determinar el tipo de animación según el índice
-function getAnimationType(index) {
-    const animations = ['fade', 'slide-vertical', 'slide-horizontal', 'rotate-scale'];
-    return animations[index % 4];
+// Función para reiniciar todos los carruseles
+function restartAllCarousels() {
+    carouselInstances.forEach(instance => {
+        // Reiniciar al primer item
+        instance.items.forEach(item => item.classList.remove('active'));
+        instance.currentIndex = 0;
+        instance.items[0].classList.add('active');
+
+        // Reiniciar carrusel
+        instance.start();
+    });
+}
+
+// Event listeners para cerrar el modal
+if (skillsModalClose) {
+    skillsModalClose.addEventListener('click', () => {
+        skillsModal.classList.remove('active');
+        document.body.style.overflow = '';
+        restartAllCarousels();
+    });
+}
+
+if (skillsModalOverlay) {
+    skillsModalOverlay.addEventListener('click', () => {
+        skillsModal.classList.remove('active');
+        document.body.style.overflow = '';
+        restartAllCarousels();
+    });
 }
 
 // ================================================================================
