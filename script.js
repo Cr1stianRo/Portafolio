@@ -560,6 +560,35 @@ if (skillsModalOverlay) {
 }
 
 // ================================================================================
+// BACKEND WARM-UP — Precarga de backends en Render para mejorar UX
+// ================================================================================
+
+// Detectar clicks en enlaces con atributo data-warmup-url
+document.addEventListener('DOMContentLoaded', () => {
+    const linksWithWarmup = document.querySelectorAll('[data-warmup-url]');
+
+    linksWithWarmup.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const warmupUrl = link.getAttribute('data-warmup-url');
+
+            if (warmupUrl) {
+                // Hacer fetch silencioso para despertar el backend de Render
+                fetch(warmupUrl, {
+                    method: 'HEAD',  // HEAD request para no cargar datos innecesarios
+                    mode: 'no-cors'  // Evitar errores de CORS
+                })
+                .catch(err => {
+                    // Ignorar errores silenciosamente - el objetivo es solo despertar el servidor
+                    console.log('Backend warm-up iniciado para:', warmupUrl);
+                });
+
+                console.log('🚀 Backend precargándose:', warmupUrl);
+            }
+        });
+    });
+});
+
+// ================================================================================
 // 3D MODEL — Modelo 3D rotando en sección "Sobre mí"
 // ================================================================================
 
