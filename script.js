@@ -563,35 +563,53 @@ if (skillsModalOverlay) {
 // BACKEND WARM-UP — Precarga de backends en Render para mejorar UX
 // ================================================================================
 
-// Detectar clicks en enlaces con atributo data-warmup-url
+// Función para hacer warm-up del backend
+function warmupBackend(url) {
+    console.log('🚀 Despertando backend:', url);
+
+    // Hacer GET request para despertar el backend de Render
+    // Usamos una imagen invisible para evitar problemas de CORS
+    const img = new Image();
+    img.src = url + '?warmup=' + Date.now();
+
+    // Timeout para limpiar
+    setTimeout(() => {
+        img.src = '';
+    }, 100);
+
+    // Método alternativo con fetch (por si el primero falla)
+    fetch(url, {
+        method: 'GET',
+        mode: 'no-cors',
+        cache: 'no-cache'
+    }).catch(() => {
+        console.log('✅ Petición de warm-up enviada');
+    });
+}
+
+// Detectar elementos con atributo data-warmup-url
 document.addEventListener('DOMContentLoaded', () => {
-    const linksWithWarmup = document.querySelectorAll('[data-warmup-url]');
+    const elementsWithWarmup = document.querySelectorAll('[data-warmup-url]');
+    const warmedUpUrls = new Set(); // Evitar warm-ups duplicados
 
-    linksWithWarmup.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const warmupUrl = link.getAttribute('data-warmup-url');
+    elementsWithWarmup.forEach(element => {
+        const warmupUrl = element.getAttribute('data-warmup-url');
 
-            if (warmupUrl) {
-                console.log('🚀 Despertando backend:', warmupUrl);
+        if (!warmupUrl) return;
 
-                // Hacer GET request para despertar el backend de Render
-                // Usamos una imagen invisible para evitar problemas de CORS
-                const img = new Image();
-                img.src = warmupUrl + '?warmup=' + Date.now();
+        // HOVER: Warm-up cuando el mouse entra (más temprano)
+        element.addEventListener('mouseenter', () => {
+            if (!warmedUpUrls.has(warmupUrl)) {
+                warmedUpUrls.add(warmupUrl);
+                warmupBackend(warmupUrl);
+            }
+        }, { once: true }); // Solo una vez
 
-                // Timeout para limpiar
-                setTimeout(() => {
-                    img.src = '';
-                }, 100);
-
-                // Método alternativo con fetch (por si el primero falla)
-                fetch(warmupUrl, {
-                    method: 'GET',
-                    mode: 'no-cors',
-                    cache: 'no-cache'
-                }).catch(() => {
-                    console.log('✅ Petición de warm-up enviada');
-                });
+        // CLICK: Warm-up también al hacer click (por si no hubo hover)
+        element.addEventListener('click', () => {
+            if (!warmedUpUrls.has(warmupUrl)) {
+                warmedUpUrls.add(warmupUrl);
+                warmupBackend(warmupUrl);
             }
         });
     });
