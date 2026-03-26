@@ -572,17 +572,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const warmupUrl = link.getAttribute('data-warmup-url');
 
             if (warmupUrl) {
-                // Hacer fetch silencioso para despertar el backend de Render
-                fetch(warmupUrl, {
-                    method: 'HEAD',  // HEAD request para no cargar datos innecesarios
-                    mode: 'no-cors'  // Evitar errores de CORS
-                })
-                .catch(err => {
-                    // Ignorar errores silenciosamente - el objetivo es solo despertar el servidor
-                    console.log('Backend warm-up iniciado para:', warmupUrl);
-                });
+                console.log('🚀 Despertando backend:', warmupUrl);
 
-                console.log('🚀 Backend precargándose:', warmupUrl);
+                // Hacer GET request para despertar el backend de Render
+                // Usamos una imagen invisible para evitar problemas de CORS
+                const img = new Image();
+                img.src = warmupUrl + '?warmup=' + Date.now();
+
+                // Timeout para limpiar
+                setTimeout(() => {
+                    img.src = '';
+                }, 100);
+
+                // Método alternativo con fetch (por si el primero falla)
+                fetch(warmupUrl, {
+                    method: 'GET',
+                    mode: 'no-cors',
+                    cache: 'no-cache'
+                }).catch(() => {
+                    console.log('✅ Petición de warm-up enviada');
+                });
             }
         });
     });
