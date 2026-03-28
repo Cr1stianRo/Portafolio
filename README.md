@@ -1,6 +1,6 @@
 # Portafolio Personal — Cristian Mateo Romero Ortiz
 
-Portafolio personal estático multi-página con diseño dark moderno y minimalista. Construido con HTML, CSS y JavaScript vanilla, sin frameworks ni dependencias externas.
+Portafolio personal estático multi-página con diseño dark moderno y minimalista. Construido con HTML, CSS y JavaScript vanilla, sin frameworks ni dependencias.
 
 ## 🚀 Características
 
